@@ -1,6 +1,6 @@
 # Beschreibung
 
-Test
+Diese Anleitung basiert auf Texten und Dateien, die ursprünglich Bernhard Ehlers in seinem Blog zur Verfügung gestellt hat. Er hat mir erlaubt, diese zu dafür zu nutzen, dass Know-How zu erhalten. Vielen Dank dafür!
 
 #### Diese Anleitung ist
 
