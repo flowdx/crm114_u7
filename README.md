@@ -1,6 +1,6 @@
 # crm114_u7 - Bayesscher Spamfilter auf uberspace 7
 
-Diese Anleitung basiert auf Texten und Dateien, die ursprünglich Bernhard Ehlers in seinem Blog zur Verfügung gestellt hat. Er hat mir erlaubt, diese hier an dieser Stelle zu nutzen. Vielen Dank dafür!
+Diese Anleitung basiert auf Texten und Dateien, die ursprünglich Bernhard Ehlers in seinem Blog zur Verfügung gestellt hat. Er hat mir erlaubt, diese hier zu nutzen. Vielen Dank dafür!
 
 #### Diese Anleitung ist
 
