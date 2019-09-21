@@ -1,6 +1,6 @@
 # crm114_u7
 
-```python
+```Shell
 mkdir -p ~/crm114
 cd ~/crm114
 curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz
