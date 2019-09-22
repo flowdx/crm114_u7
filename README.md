@@ -52,13 +52,13 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
-Zuerst eine Umgebungsvariable
+Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde:
 
 ```Shell
 export MAILUSERNAME=[!USERNAME!]
 ```
 
-Anschließend die folgenden vier Befehle in der Shell ausführen:
+Anschließend die folgenden vier Befehle in der Shell ausführen um die Ordner in dem Mailaccount anzulegen:
 ```Shell
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
@@ -67,7 +67,8 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmak
 ```
 
 Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
-Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen / zu abbonieren bevor sie im Mailclient auftauchen!
+Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen / zu abbonieren bevor sie im Mailclient auftauchen!\
+Im RainLoop-Webmail-Client von Uberspace7(https://webmail.uberspace.de/) geht das Einblenden durch Klicks auf das jeweilige Augen-Icon 
 
 ## Installation & Einrichtung CRM114
 
