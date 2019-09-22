@@ -42,6 +42,10 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake 
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
 ```
+
+Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
+Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen / zu abbonieren bevor sie im Mailclient auftauchen!
+
 ## Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114.\
