@@ -30,11 +30,11 @@ Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen a
 
 **An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [!USERNAME!]***. Du könntest ab hier `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
-### 4.1 Neuen Mailaccount anlegen
+### 5.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
 (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-### 4.2 Benötigte Ordnerstruktur
+### 5.2 Benötigte Ordnerstruktur
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
   INBOX
@@ -48,7 +48,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |___ als Spam lernen
 ```
 
-### 4.3 Diese geforderte Ordnerstruktur einrichten
+### 5.3 Diese geforderte Ordnerstruktur einrichten
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
@@ -70,9 +70,10 @@ Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
 Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen / zu abbonieren bevor sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner ein durch Klick auf das jeweilige Augen-Icon unter `Settings > Folders`.
 
-## Installation & Einrichtung CRM114
+## 6. Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114.\
+(Dazu wird u.a. auch TRE (The free and portable approximate regex matching library) von Laurikari verwendet sowie Konfiurationsdateien hier aus diesem Repository.)
 **Wichtig**: Sofern dieser Ordner bereits existiert wird er ohne Rückfrage überschrieben.
 
 ```Shell
