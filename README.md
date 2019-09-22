@@ -109,5 +109,13 @@ if ($SIZE < 2000000)
     }
 }
 to "$MAILDIR"       
-
+```
+```
+cd
+touch .qmail-[USERNAME]
+chmod 644 .qmail-[USERNAME]
+nano .qmail-[USERNAME]
+```
+```
+|maildrop $HOME/.mailfilter_[USERNAME]
 ```
