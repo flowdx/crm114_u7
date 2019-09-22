@@ -1,7 +1,7 @@
 # Lernenden Spamfilter auf Uberspace7 selbst betreiben 
 Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blogtext und seinen Config-Dateien. Er gab mir die Erlaubnis, sie als Grundlage zu verwenden.
 ## Hintergrund
-Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual: 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Es ist möglich, via qmail und mailfilter, auch bei niedrigeren Rspamd-Scores eigene Verarbeitungsschritte einzubauen. Wer Spam effektiv ausfiltern möchte, der benötigt einen trainierbaren Spamfilter, der in viele Mailclients fest integriert ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift, wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
+Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Es ist möglich, via qmail und mailfilter, auch bei niedrigeren Rspamd-Scores eigene Verarbeitungsschritte einzubauen. Wer Spam effektiv ausfiltern möchte, der benötigt einen trainierbaren Spamfilter, der in viele Mailclients fest integriert ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift, wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
 
 An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar) vorinstallierte Spamfilter gibt/gab. Diese funktionieren zwar, werden bei U7 aber nicht mehr integriert werden.
 
@@ -27,10 +27,10 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |
       |___ als Spam lernen
 ```                 
-Die Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
+Diese Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 
-Zuerst folgenden Befehl in der Shell ausführen.\
-**WICHTIG: [USERNAME] muss, einschließlich der [], durch den Benutzernamen des Mailaccount ersetzt werden!**
+Zuerst folgenden Befehl **ABGEWANDELT!** in der Shell ausführen.\
+**WICHTIG: [USERNAME] muss, einschließlich der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
 ```Shell
 export MAILUSERNAME=[USERNAME]
 ```
@@ -42,7 +42,10 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake 
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
 ```
-## Weiter geht's
+## Installation & Einrichtung CRM114
+
+Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114.\
+**Wichtig**: Sofern dieser Ordner bereits existiert wird er ohne Rückfrage überschrieben.
 
 ```Shell
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
@@ -75,3 +78,5 @@ sh db_init # Die Einrichtung der Datenbank durchführen
 cd ..
 
 ```
+
+## Spamerkennung für den Mailaccount einrichten
