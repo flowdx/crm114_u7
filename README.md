@@ -26,12 +26,11 @@ Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen a
 
 **An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [#USERNAME#]***. Du könntest ab hier `[#USERNAME#]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
+### 4.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [#USERNAME#]` nutzen.\
 (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-
-
-
+### 4.2 Benötigte Ordnerstruktur
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
   INBOX
@@ -43,8 +42,11 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |___ als Spam erkannt
       |
       |___ als Spam lernen
-```                 
-Diese Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
+```
+
+### 4.3 Diese Ordnerstruktur einrichten
+                 
+Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten:
 
 Zuerst folgenden Befehl **ABGEWANDELT!** in der Shell ausführen.\
 **WICHTIG: [#USERNAME#] muss, einschließlich Rauten und der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
