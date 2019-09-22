@@ -15,7 +15,7 @@ Mit folgendem Zitat von Bernhard ist alles gesagt:
 Es besteht ein Mailaccount, der mit 'uberspace mail user add USERNAME' erstellt wurde.
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
-```Shell
+```
              INBOX
               \
                0 Spamfilter
