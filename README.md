@@ -86,13 +86,13 @@ cd ..
 ## Spamerkennung für den Mailaccount einrichten
 ```
 cd
-touch .mailfilter_[USERNAME]
-chmod 600 .mailfilter_[USERNAME]
-nano .mailfilter_[USERNAME]
+touch .mailfilter_[USERNAME] # CHANGE!
+chmod 600 .mailfilter_[USERNAME] # CHANGE!
+nano .mailfilter_[USERNAME] # CHANGE!
 ```
 
 ```
-MAILUSERNAME=[USERNAME]
+MAILUSERNAME=[USERNAME] # CHANGE!
 MAILDIR="$HOME/users/$MAILUSERNAME"
 MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
 
@@ -112,10 +112,10 @@ to "$MAILDIR"
 ```
 ```
 cd
-touch .qmail-[USERNAME]
-chmod 644 .qmail-[USERNAME]
-nano .qmail-[USERNAME]
+touch .qmail-[USERNAME] # CHANGE!
+chmod 644 .qmail-[USERNAME] # CHANGE!
+nano .qmail-[USERNAME] # CHANGE!
 ```
 ```
-|maildrop $HOME/.mailfilter_[USERNAME]
+|maildrop $HOME/.mailfilter_[USERNAME] # CHANGE!
 ```
