@@ -25,9 +25,9 @@ Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [#USERNAME#]` nutzen.\
-(siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))\
+(siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-**An dieser Stelle einmal noch der Verweis auf *Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [#USERNAME#]* **
+**An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [#USERNAME#]***
 
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
