@@ -144,3 +144,16 @@ und dort folgende Zeile ergänzen:
 ```
 */20 * * * *	sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 ```
+
+### Regelmäßig automatisches Aufräumen des Caches via crontab aktivieren
+
+cache_cleanup sorgt dafür, dass die Cache-Dateien regelmäßig entschlackt werden.
+
+Die Crontab aufrufen mit:
+```Shell
+crontab -e
+```
+und dort folgende Zeile ergänzen:
+```
+32 4 * * 0,3	crm114/cache_cleanup
+```
