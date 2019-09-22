@@ -5,12 +5,12 @@ Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) au
 
 An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar) vorinstallierte Spamfilter gibt/gab. Diese funktionieren zwar, werden bei U7 aber nicht mehr integriert werden.
 
-## Spamfiltersoftware der Wahl: CRM114
+## 2. Spamfiltersoftware der Wahl: CRM114
 
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-## 2. WICHTIG: die Platzhalter-Variable [#USERNAME#]
+## 3. WICHTIGE Grundlage: die Platzhalter-Variable [#USERNAME#]
 
 In der folgenden Anleitung wird an mehreren Stellen die Platzhalter-Variable [#USERNAME#] auf. Diese ist **IMMER** durch einen selbstgewählten Benutzernamen zu ersetzen, und zwar unter Wegfall der eckigen Klammern
 und der Rauten!
