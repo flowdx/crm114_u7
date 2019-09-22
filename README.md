@@ -98,7 +98,7 @@ und dort folgende Zeile ergänzen:
 ```
 */20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 ```
-Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen, dann noch mal Enter.
+Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen.
 
 ### Regelmäßig automatisches Aufräumen des Caches via crontab aktivieren
 
@@ -112,7 +112,7 @@ und dort folgende Zeile ergänzen:
 ```
 32 4 * * 0,3 crm114/cache_cleanup
 ```
-Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen, dann noch mal Enter.
+Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen.
 
 ## Spamerkennung für einen Mailaccount einrichten
 
@@ -127,7 +127,7 @@ touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sof
 chmod 600 .mailfilter_[#USERNAME#] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
 nano .mailfilter_[#USERNAME#] # CHANGE!      # Öffnet die Datei zum Bearbeiten
 ```
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen, 'y' eingeben und mit zwei mal Enter das Speichern bestätigen.
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen, 'y' eingeben und mit Enter das Speichern bestätigen.
 ```
 MAILUSERNAME=[#USERNAME#] # CHANGE!
 MAILDIR="$HOME/users/$MAILUSERNAME"
