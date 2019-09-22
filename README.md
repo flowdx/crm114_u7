@@ -66,8 +66,8 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmak
 ```
 
 Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
-Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen / zu abbonieren bevor sie im Mailclient auftauchen!\
-Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner ein durch Klick auf das jeweilige Augen-Icon unter `Settings > Folders`.
+Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen bzw. zu abbonieren, bevor sie im Mailclient auftauchen!\
+Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner wie folgt ein: `Settings > Folders` aufrufen und über die jeweiligen Augen-Icons einblenden.
 
 ## 6. Installation & Einrichtung CRM114
 
@@ -178,8 +178,8 @@ In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpas
 
 ## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
-Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und zusätzlich eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
-zuzustellen. So kann das Verhalten des Spamfilters bei reel ankommenden Mails getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
+Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
+zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, aber ohne in die produktive E-Mail-Adresse einzugreifen.
 
 Dafür die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
 
