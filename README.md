@@ -77,7 +77,7 @@ Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114
 
 **Wichtig**: Sofern dieser Ordner bereits existiert wird er ohne Rückfrage überschrieben.
 
-Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Aus wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
+Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
 
 ```Shell
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
