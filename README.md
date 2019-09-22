@@ -98,6 +98,7 @@ und dort folgende Zeile ergänzen:
 ```
 */20 * * * *	sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 ```
+Speichern und schließen.
 
 ### Regelmäßig automatisches Aufräumen des Caches via crontab aktivieren
 
@@ -111,7 +112,7 @@ und dort folgende Zeile ergänzen:
 ```
 32 4 * * 0,3	crm114/cache_cleanup
 ```
-
+Speichern und schließen.
 
 ## Spamerkennung für einen Mailaccount einrichten
 
