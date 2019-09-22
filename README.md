@@ -77,6 +77,8 @@ Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114
 
 **Wichtig**: Sofern dieser Ordner bereits existiert wird er ohne Rückfrage überschrieben.
 
+Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Aus wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
+
 ```Shell
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
 cd ~/crm114             # Wechsle in den Ordner 'crm114'
@@ -124,24 +126,23 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 */20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 32 4 * * 0,3 crm114/cache_cleanup
 ```
-Datei mit nano speichern und schließen geht immer wie folgt: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
+Nun Speichern und Schließen! Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
 ## Spamerkennung für einen Mailaccount einrichten
 
-**Auch hier gilt: Jedes [!USERNAME!] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**\
-**Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
+**Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
-### .Mailfilter-Datei erstellen
+### .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
 cd
-touch .mailfilter_[!USERNAME!] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-chmod 600 .mailfilter_[!USERNAME!] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
-nano .mailfilter_[!USERNAME!] # CHANGE!      # Öffnet die Datei zum Bearbeiten
+touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen, 'y' eingeben und mit Enter das Speichern bestätigen.
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit Strg+X, `y`, Enter.
 ```
-MAILUSERNAME=[!USERNAME!] # CHANGE!
+MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
 MAILDIR="$HOME/users/$MAILUSERNAME"
 MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
 
