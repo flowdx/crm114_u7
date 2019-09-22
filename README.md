@@ -12,7 +12,8 @@ Mit folgendem Zitat von Bernhard ist alles gesagt:
 
 ## Voraussetzung: Mailaccount mit korrekter Ordnerstruktur
 
-Es besteht ein Mailaccount, der mit 'uberspace mail user add [USERNAME]' erstellt wurde.\
+Es besteht ein Mailaccount, der mit 'uberspace mail user add [#USERNAME#]' erstellt wurde.\
+Das [#USERNAME#] wird beim Erstellen durch einen Benutzernamen ersetzt, und zwar ohne die eckigen Klammern und die Raute. In der folgenden Anleitung wird [#USERNAME#] immer als Platzhalter verwendet und muss immer durch den eigentlichen Benutzernamen ersetzt werden.\
 (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
