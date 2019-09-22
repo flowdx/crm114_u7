@@ -189,7 +189,7 @@ Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
 |maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
-## 10. OPTIONAL: Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
+## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durch:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen
 - Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen, z.B. `.mailfilter_meinehauptmailadresse`
