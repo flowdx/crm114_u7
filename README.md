@@ -167,9 +167,9 @@ Folgende Befehle, **immer jeweils angepasst**, ausführen.
 
 ```Shell
 cd ~
-touch .qmail-[!USERNAME!] # CHANGE!
-chmod 644 .qmail-[!USERNAME!] # CHANGE!
-nano .qmail-[!USERNAME!] # CHANGE!
+touch .qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 644 .qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
 In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
@@ -177,3 +177,4 @@ In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpas
 |maildrop $HOME/.mailfilter_[!USERNAME!] # CHANGE!
 ```
 
+### 8.3 OPTIONAL: Produktive E-Mail-Adresse in den Test mit einbeziehen
