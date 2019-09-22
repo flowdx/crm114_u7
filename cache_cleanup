@@ -1,0 +1,57 @@
+#!/bin/sh
+########################################################################
+# 2013-08-28 Christopher Hirschmann c.hirschmann@jonaspasche.com
+# 2018-04-16 Bernhard Ehlers be@bernhard-ehlers.de
+########################################################################
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+########################################################################
+#
+# This script helps to maintain an CRM114 installation.
+#
+# Old mails are usefull for training CRM114, but after more than
+# KEEPDAYS days after receiving mail this becomes pointless.
+#
+# You can make this script more verbose with '-v'.
+#
+########################################################################
+
+CACHEDIR="$HOME/crm114/reaver_cache"
+KEEPDAYS=7
+
+while getopts ":hv" Option
+do
+    case $Option in
+        h       )       echo -e "Usage:\n-v\tbe verbose\n-h\tthis help message"; exit 0;;
+        v       )       VERBOSE=1; ;;
+        *       )       echo -e "ERROR: Unimplemented option chosen: -${OPTARG}"; exit 1;;
+    esac
+done
+
+if [ ! `grep -q "CentOS release 5" /etc/redhat-release` ]; then
+  # ionice -c3 is not supported on CentOS 5 for users != root (needs Linux => 2.6.25)
+  # so let's fall back to ionice -c2 -n7 which is better than nothing
+  BE_NICE="nice -n 19 ionice -c2 -n7"
+else
+  BE_NICE="nice -n 19 ionice -c3"
+fi
+
+if [ "${VERBOSE}" == "1" ];
+then
+	echo "Removing cache files older than $KEEPDAYS days:";
+	$BE_NICE find "${CACHEDIR}" -type f -mtime +$KEEPDAYS -ls -exec rm {} \;
+else
+	$BE_NICE find "${CACHEDIR}" -type f -mtime +$KEEPDAYS -exec rm {} \;
+fi
