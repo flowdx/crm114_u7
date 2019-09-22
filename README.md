@@ -180,7 +180,7 @@ In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpas
 ### 8.3 OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
 Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und zusätzlich eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
-zuzustellen. So kann das Verhalten des Spamfilters in der Test-E-Mail-Adresse getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
+zuzustellen. So kann das Verhalten des Spamfilters bei reel ankommenden Mails getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
 
 Dafür die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
 
