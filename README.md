@@ -127,7 +127,7 @@ touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sof
 chmod 600 .mailfilter_[#USERNAME#] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
 nano .mailfilter_[#USERNAME#] # CHANGE!      # Öffnet die Datei zum Bearbeiten
 ```
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen und das Speichern bestätigen.
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen, 'y' eingeben und mit zwei mal Enter das Speichern bestätigen.
 ```
 MAILUSERNAME=[#USERNAME#] # CHANGE!
 MAILDIR="$HOME/users/$MAILUSERNAME"
