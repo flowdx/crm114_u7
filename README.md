@@ -88,6 +88,7 @@ cd ..
 **Auch hier gilt: Jedes [#USERNAME#] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**\
 **Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
 
+### .Mailfilter-Datei erstellen
 Zuerst folgende Befehle, immer jeweils angepasst, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
 cd
@@ -115,6 +116,7 @@ if ($SIZE < 2000000)
 }
 to "$MAILDIR"       
 ```
+### .qmail-Datei erstellen
 ```
 cd
 touch .qmail-[#USERNAME#] # CHANGE!
