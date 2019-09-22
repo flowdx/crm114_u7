@@ -19,7 +19,11 @@ Beispiel:\
 Sofern man sich für den Benutzernamen `nureintestbenutzer` entscheidet, und der Befehl in der Anleitung `uberspace mail user add [!USERNAME!]` lautet, so muss `uberspace mail user add nureintestbenutzer`
 eingegeben werden.
 
-## 4. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
+## 4. WICHTIGE GRUNDLAGE: Alle Befehle hier werden via SSH-Zugriff in der Bash-Konsole eingegeben.
+
+Es werden Bash-Befehle genutzt sowie Dateien und die crontab via nano bearbeitet.
+
+## 5. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
@@ -44,9 +48,11 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |___ als Spam lernen
 ```
 
-### 4.3 Diese Ordnerstruktur einrichten
+### 4.3 Diese geforderte Ordnerstruktur einrichten
                  
-Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten:
+Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
+
+Zuerst eine Umgebungsvariable
 
 ```Shell
 export MAILUSERNAME=[!USERNAME!]
