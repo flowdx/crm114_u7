@@ -1,0 +1,442 @@
+#  mailfilter.cf  -- Config file for mailfilter, mailreaver, mailtrainer
+#
+#    You MUST edit the fileds for "Secret Password", "mime decoder", and
+#    "cache_dupe_command".  Just those THREE things.
+#
+#     Changes to all other values are optional.
+#
+#    Many of the options here have two or three alternatives; for your
+#     convenience, we have put all of the reasonable alternatives
+#      on sequential lines.  Uncomment the one you want, and leave the
+#       others commented out.  If you leave more than one uncommented, the
+#       last one is the one that's used.  Don't do that; it's ugly.
+#
+#   After you edit this file, don't forget to edit 'rewrites.mfp'
+
+#     --------->>>  You MUST set the following correctly! <<<-------
+#
+#    If you leave it as "DEFAULT-PASSWORD", you will not be able to
+#    access the mail-to-myself commanding system, as "DEFAULT-PASSWORD"
+#    is specifically _disabled_ as a legal password.  Just pick something, eh?
+#
+:spw: /DEFAULT_PASSWORD/
+
+# ----- If you want a verbose startup, turn this on.  Note that this is
+#  ----- intentionally _after_ the password is set, so a verbose startup
+#   ----- will not reveal your password.
+#
+#:verbose_startup: /SET/
+:verbose_startup: //
+
+#
+#     --------->>>  You MUST set the following correctly! <<<-------
+#
+#     --- Some mail systems do mime decoding with "mimencode -d" or "-u".
+#     --- Others (such as Red Hat 8.0) use "mewdecode" .
+#     --- Yet others (such as Fedora Core 3) use "openssl base64 -d" .
+#     --- Yet Others (i.e. *BSDs) can use "base64" .
+#     --- See which one is on your system and use that one- comment
+#     --- the others out.  If you can't figure out what your base64 mime
+#     --- decoder is, or don't want mime decoding, set :do_base64: to /no/
+#     --- but expect a significant accuracy decrease if you do this.
+#
+#:do_base64: /no/
+:do_base64: /yes/
+#
+#:mime_decoder: /mewdecode/
+#:mime_decoder: /mimencode -d/
+#:mime_decoder: /mimencode -u/
+#:mime_decoder: /base64 -d/
+:mime_decoder: /openssl base64 -d/
+#:mime_decoder: /normalizemime/
+
+
+#     --------->>>  You MUST set the following correctly! <<<-------
+#
+#    --- Linux (and Unix) systems use "hardlinks" to make a file
+#    --- appear in more than one place, while not actually using up
+#    --- extra disk space.  Sadly, it is the case that most
+#    --- Windows systems have no such feature.  So, you must set the
+#    --- following for what kind of system you are actually using.
+#    --  Note to other developers: here's where to put other system-dependent
+#    --  syscall commands.
+#
+#    --- Use the default /ln/ for LINUX and UNIX systems (does a hard-link,
+#    --- does not use up disk space or inodes).  Change this to the /copy/
+#    --- command for WINDOWS systems (95, 98, NT, XP)
+#
+#    --- Mild security issue: to avoid a theoretical exploit where a user
+#    --- gets their commands re-aliased, make sure you use the fully qualified
+#    --- commandname (that is, starting in the root directory).
+#
+:cache_dupe_command: /\/bin\/ln/
+#:cache_dupe_command: /copy/
+
+
+
+###########################################################################
+#
+#                END of things you absolutely MUST set.  Feel free
+#            to keep reading though...
+#
+###########################################################################
+
+###########################################################################
+#
+#             START of things you might likely want to set.  These
+#            are probably OK for you, but many users change these things.
+#
+##########################################################################
+
+#  ----------- define an optional target for where to send spam (that is,
+#   ------------ emails that we want to "fail", or reject to another
+#    ------------ address.  Note that this is NOT a "program fault" address,
+#     ------------ but where to send "bad" email to in the general case.
+#      ------------ You can specify tightly controlled conditions too,
+#       ------------ (see the next stanza)
+#   ----------- To NOT forward this to another account, just leave the
+#    ----------- address as the empty string, which is '//'.
+#     ----------- This works fine especially if your mail reader program
+#      ----------- can sort based on the ADV and UNS (or whatever you choose
+#       ----------- to use as flagging strings) in the "Subject:" field.
+#     ------- CAUTION- some systems are buggy and _REQUIRE_ a user@host.domain
+#    ----- in the following to forward spammy mail correctly.  WTF??? :-(
+#
+#:general_fails_to: /somebody@somewhere.net/
+:general_fails_to: //
+
+
+#   -------- If you would prefer to send specific kinds of spam to
+#    -------- different mailboxes, here's where to do it.
+#     -------- (be sure to uncomment the line!).  Again, these are
+#      --------- not "program fault" conditions, just different filter results.
+#
+# :fail_priority_mail_to:  /where_priority_fails_go/
+# :fail_blacklist_mail_to:  /where_blacklist_fails_go/
+# :fail_SSM_mail_to:  /where_Classifier_fails_go_for_mailFILTER/
+# :fail_classify_mail_to: /where_classifier_fails_go_for_mailREAVER/
+
+
+#  ---------  Do we give nonspam, spam, and unsure an exitcode of 0
+#  ---------   	(for most standalone apps) or something else?
+#  ---------     Usually we use an exit code of 1 for "program fault",
+#  ---------      but change it if you need to use 0/1 for good/spam
+#  ---------       Don't use an exit code greater than 128 (it breaks BASH!)
+#  ---------     If you use exit codes (procmail doesn't) change it here.
+:rejected_mail_exit_code: /0/
+:accepted_mail_exit_code: /0/
+:unsure_mail_exit_code: /0/
+:program_fault_exit_code: /1/
+
+#######################################################################
+#
+#         END of things you are likely to want to change.
+#
+#         Anything following is starting to approach true customization.
+#        Feel free to explore and poke around.
+######################################################################
+
+# -----------Do we want to add the optional headers to the mail?
+# -----------If turned on, will add X-CRM114-Whatever: headers on each
+# -----------incoming email.  (note- this does NOT turn off the cache-id header
+#
+:add_headers: /yes/
+#:add_headers: /no/
+
+
+# ---------  do we add the statistics report?
+:add_verbose_stats: /yes/
+#:add_verbose_stats: /no/
+
+
+# ---------  do we add the mailtrainer report to the top of the message body
+# ---------  after training?
+#:add_mailtrainer_report: /yes/
+:add_mailtrainer_report: /no/
+
+
+#  ---------  Do we enable long-form explains (with lots of text)?
+#  -- you can have no extra stuff, add it as text, or add it as an attachment.
+#  -- (only available in mailfilter, not mailreaver)
+#
+:add_extra_stuff: /no/
+# :add_extra_stuff: /text/
+# :add_extra_stuff: /attachment/
+
+
+#  ---------  Do we want to insert a "flagging" string on the subject line,
+#  ---------  perhaps to insert an 'ADV:'  ?  Whatever string we put here
+#  ---------  will be inserted at the front of the subject if we think the
+#  ---------  mail is spam.
+#
+# :spam_flag_subject_string: //
+#:spam_flag_subject_string: /ADV:/
+:spam_flag_subject_string: /SPAM:/
+
+#  ---------  Do we want to insert a "flagging" string on the subject line
+#  ---------  for good email?  Usually we don't.... so we set this to the
+#  ---------  null string - that is, //
+:good_flag_subject_string: //
+
+#  ------------Similarly, do we want to insert a "flagging" string on
+#  -------------the subject line of an "unsure" email?  This way we know
+#  --------------we need to train it even if "headers" is turned off.
+#:unsure_flag_subject_string: //
+#:unsure_flag_subject_string: /UNS:/
+:unsure_flag_subject_string: /UNSURE:/
+
+# ------------- Do we want Training ConFirmation flags on the results of
+# ------------- a message to be learned?  Default is "TCF:".
+#:confirm_flag_subject_string: /TCF:/
+:confirm_flag_subject_string: /LEARNED:/
+#:confirm_flag_subject_string: //
+
+
+# ---------  Do we want to do any "rewrites" to increase generality and
+#  ---------- (usually) accuracy?  IF 'yes', be sure to edit rewrites.mfp!
+#    --------- NOTE: this option is somewhat slow.  If your mailserver is
+#      --------- maxed out on CPU, you might want to turn this off.
+#
+:rewrites_enabled: /yes/
+#:rewrites_enabled: /no/
+
+
+#  ---------  Do we copy incoming text into allmail.txt ?  default is yes, but
+#   ---------  experienced users will probably set this to 'no' after testing
+#    ---------  their configuration for functionality.
+#
+#:log_to_allmail.txt:  /yes/
+:log_to_allmail.txt: /no/
+
+#   -------  Another logging option - log all mail to somewhere else
+#    -------  entirely.  Whatever pathname is given here will be prefixed
+#     -------  by :fileprefix:
+#      -------  To not use this, set it to the null string .. //
+#       -------  Remember to backslash-escape path slashes!
+:log_all_mail_to_file: //
+#:log_all_mail_to_file: /my_personal_mail_log_file_name.txt/
+
+#     --------- When we log messages, should we use a mail separator?
+#      --------- And, if so, what?
+:mail_separator: /\n-=-=-=-=-=-=- cut here -=-=-=-=-=-=-\n/
+
+#
+#     ---------- Message Cacheing for retraining - do we keep a cache of
+#    ---------- messages we've classified recently "in the wild" as retrain
+#   ---------- texts?  This uses up some disk space, but means that we can
+#  ---------- use mailtrainer.crm on these messages to autotune the classifier.
+# ---------- Default is to cache into the directory reaver_cache ;
+#  ---------- if you don't want this, set it to // .  If you don't use this,
+#   ---------- you can't really use mailtrainer.crm, and you must keep your
+#    ---------- headers scrupulously clean in all train messages.  Recommended
+#     ---------- to leave this unchanged unless you are VERY short of disk.
+#
+:text_cache: /reaver_cache/
+# :text_cache: //
+
+
+#   ----- How do we invoke the trainer (as in, just the invocation
+#   ------ of CRM114 on mailtrainer.crm.  Usually this is just obvious,
+#   ------- but if you don't have CRM114 installed in the search path, here's
+#   -------- where you can set trainer invocation to be via whatever path
+#   --------- you want it (the second example is if you haven't installed
+#   ---------- CRM114 at all, but are running the crm114_tre static binary
+#   ----------- right out of the local directory.)
+#
+#     -- use this next one if you have installed CRM114 with "make install"
+#     -- (This is preferred and is the default)
+#:trainer_invoke_command: /.\/mailtrainer.crm/
+#
+#     -- use this one if you can't do a "make install" and so must run the
+#     --- crm114_tre binary directly out of the current working directory.
+# :trainer_invoke_command: /.\/crm114_tre mailtrainer.crm /
+:trainer_invoke_command: /.\/crm114 mailtrainer.crm/
+
+
+#    ------  If we're cacheing for retraining, we're probably using
+#     ------  mailtrainer.crm or some other variant.  In that case,
+#      ------  you will want a "randomizer" to present the training
+#       ------  examples to the classifier in some random but balanced order.
+#        ------  You have two choices - you can either use the "sort"
+#         ------  command on some random character in the filename (this
+#          ------  is NOT recommended) or use the "shuffle.crm" program.
+#           ------  We _strongly_ recommend using shuffle.crm; the default
+#            ------  options to shuffle.crm will work fine.  Alternatively,
+#             ------  you can use the "sort --key 1.2" on date-named files to
+#              -----   achieve chronological training
+#:trainer_randomizer_command: /.\/shuffle.crm/
+#:trainer_randomizer_command: /.\/crm114 shuffle.crm/
+:trainer_randomizer_command: /.\/crm114 shuffle.crm/
+#:trainer_randomizer_command: /sort --key 1.2/
+
+
+#  ---------  Do we log rejected mail to a file?  default yes, but most
+#   ---------  users should set this to no after testing their
+#    ---------  configuration to verify that rejected mail goes to the
+#     ---------  reject address.  Only works in mailfilter.crm
+#
+#:log_rejections: /yes/
+:log_rejections: /no/
+
+#  ------- alternate rejection logging - set this pathname to non-null
+#   ------  to log rejections elsewhere.  Only for mailreaver.crm.
+#    -----   Set to NULL ( // ) to turn this off.
+:log_rejections_to_file: //
+#:log_rejections_to_file /this_is_my_rejected_email_log_file.txt/
+
+
+#   ----------Do we want to enable "inoculation by email"?
+#   --------(leave this off unless you want RFC inoculations)
+#
+:inoculations_enabled: /no/
+#:inoculations_enabled: /yes/
+
+
+#  --------- How many characters of the input do we really trust to be
+#  ---------- worthy of classification?  Usually the first few thousand
+#  ----------- bytes of the message tell more than enough (though we've
+#  ------------ been "noticed" by spammers, who are now packing 4K of
+#  ------------- innocuous text into their headers.  No problemo... :) )
+#
+#:decision_length: /4096/
+#:decision_length: /64000/
+:decision_length: /16000/
+#  -----  for entropy users ONLY - 4K is plenty!
+#:decision_length: /4096/
+
+
+
+#  ------------ Do we want to expand URLs (that is, fetching the contents
+#  ------------- of a URL and inserting that after the url itself?)
+#  -------------- By default this is off, but turn it on if you want
+#  --------------- to experiment.
+:expand_urls: /no/
+# :expand_urls: /yes/
+#
+#         WGET options - 30-second timeout, output to stdout.
+#         HACK - use the proper --user-agent="IEblahblah" for max effect!
+:url_fetch_cmd:  /wget -T 30 -O -  /
+#         and trim the URL text to not more than 16bytes of text.
+:url_trim_cmd:  / head -c 16000 /
+
+
+#######################################################################
+#
+#   -------------------  YOU REALLY SHOULD STOP HERE -------------------
+#   ---------  values below this line are usually OK for almost all
+#   ---------  users to use unchanged - Gurus only beyond this point.
+#
+#######################################################################
+#
+#   If you want to change things here, go ahead, but realize you are
+#   playing with things that can really hurt accuracy.
+#
+#   This being open source, if you don't *think* about changing it,
+#   what would be the use of it being open source?  That said, this
+#   _is_ open source- you break it, you get to keep _both_ pieces!
+#
+#
+#   ------------ CLF - The Classifier Flags ----------
+#
+#   ---------  Which classifier flags do we use?  Default for 20060101 has
+#   ---------  been changed to OSB UNIQUE MICROGROOM.
+#
+#   ---------  A null setting gets you straight Markovian, without
+#   ---------  microgrooming.   OSB uses less memory, is faster,
+#   ---------  and is usually more accurate.  Correlative matching is
+#   ---------  100x - 1000x slower, but can match anything (binaries,
+#   ---------  wide chars, unicode, virii, _anything_.  Winnow is a
+#   ---------  non-statistical learning classificer with very nice
+#   ---------  accuracy (up to 2x SBPH).  Hyperspace is a pseudogaussian
+#   ---------  KNN (K-nearest-neighbor) matcher.
+#
+#   ---------  This is also where we set whether to use microgrooming
+#   ---------  or Arne optimization (they're currently mutually exclusive).
+#   ---------  If you turn off microgrooming you get Arne optimization
+#   ---------  automatically.
+#
+#   ---------  If you _change_ this, you _must_ empty out your .css or
+#   ---------  .cow files and build fresh ones, because these
+#   ---------  classifiers do NOT use compatible data storage formats!
+#
+#:clf: /microgroom/
+#:clf: /osb/
+#:clf: /osb microgroom/
+:clf: /osb unique microgroom/
+#:clf: /correlate/
+#:clf: /winnow/
+#:clf: /osbf/
+#:clf: /osbf microgroom/
+#:clf: /hyperspace/
+#:clf: /hyperspace unique/
+#
+#
+#
+#     --------Thresholds for GOOD/UNSURE/SPAM thick-threshold training
+#     -------
+#     ------ A very small thick threshold (or zero!) works for Markovian.
+#     ----- A thick threshold of 5 to 20 seems good for OSB, OSBF,
+#     ---- Hyperspace, Bit-Entropy, and Winnow.  If you want an asymmetric
+#     --- threshold system, you can do that by having :good_threshold:
+#     -- be different from :spam_threshold:.  The defaults are +/- 10.0
+#
+#
+#   ---- Things rated equal to or better than this are GOOD email
+#:good_threshold: /0.01/
+#:good_threshold: /5.0/
+:good_threshold: /10.0/
+#:good_threshold: /20.0/
+#
+#   ---- Things rated less than or equal to this are SPAM
+#:spam_threshold: /-0.01/
+:spam_threshold: /-5.0/
+#:spam_threshold: /-10.0/
+#:spam_threshold: /-20.0/
+
+#   ---- mailfilter uses a single threshold and operates symmetrically.
+#   --- (this is only to provide backward compatibility)
+:thick_threshold: /5.0/
+
+#   ---- What regex do we use for LEARN/CLASSIFY?  the first is the
+#   ---- "old standard".  Other ones are handy for different spam
+#   ---- mixes.  The last one is for people who get a great deal of
+#   ---- packed HTML spam, which is almost everybody in 2003, so it
+#   ---- used to be the default.  But since spammers have shifted away
+#   ---- from this, it isn't the default any longer.  IF you change
+#   ---- this, you MUST rebuild your .css files with decent
+#   ---- amounts of locally-grown spam and nonspam ( if you've been
+#   ---- following instructions and using the "reaver" cache, this is
+#   ---- easily done! )
+#
+:lcr: /[[:graph:]]+/
+#:lcr: /[[:alnum:]]+/
+#:lcr: /[-.,:[:alnum:]]+/
+#:lcr: /[[:graph:]][-[:alnum:]]*[[:graph:]]?/
+#:lcr: /[[:graph:]][-.,:[:alnum:]]*[[:graph:]]?/
+#
+#  this next one is pretty incomprehensible, and probably wrong...
+#:lcr: /[[:print:]][/!?\#]?[-[[:alnum:]][[:punct:]]]*(?:[*'=;]|/?>|:/*)?
+#
+#
+#     Expansions for antispamming.  You almost _always_ want these on,
+#     unless you're debugging something really bizarre.
+
+#  ---------  Do we enable spammus interruptus undo?
+:undo_interruptus: /no/
+#:undo_interruptus: /yes/
+#
+#
+#
+# ------------ HIGHLY EXPERIMENTAL - automatic training!
+#             enable this only if you really want to live VERY dangerously!
+#              "Do you feel lucky today, punk?  Well, do ya?"
+#
+:automatic_training: /no/
+#
+#       ---- if you are living dangerously and have turned on autotraining,
+#            you should also set the following to point to an address that
+#            will get read on a quick basis, becuause this is where autotrain
+#            verifications will go.
+#
+#:autotrain_address: /root/
+#
