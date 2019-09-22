@@ -174,7 +174,21 @@ nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
 In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
 ```Shell
-|maildrop $HOME/.mailfilter_[!USERNAME!] # CHANGE!
+|maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
 
-### 8.3 OPTIONAL: Produktive E-Mail-Adresse in den Test mit einbeziehen
+### 8.3 OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
+
+Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und zusätzlich eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
+zuzustellen. So kann das Verhalten des Spamfilters in der Test-E-Mail-Adresse getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
+
+Dafür die .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
+
+Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
+```
+./users/meinehauptmailadresse/
+|maildrop $HOME/.mailfilter_[!USERNAME!]
+```
+
+Sofern man mit dem Test zufrieden ist, erstellt man später die Ordnerstruktur in der produktiven E-Mail-Adresse, erstellt die entsprechende Mailfilter-Datei für diese Adresse neu, und ändert dann in der
+.qmail Datei die maildrop-Mailfilter-Funktion entsprechend ab. Darüber hinaus würde dann die Zeile `./users/meinehauptmailadresse/` auskommentiert, so: `#./users/meinehauptmailadresse/`.
