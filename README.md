@@ -182,13 +182,19 @@ In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpas
 Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und zusätzlich eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
 zuzustellen. So kann das Verhalten des Spamfilters in der Test-E-Mail-Adresse getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
 
-Dafür die ***vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
+Dafür die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
 
 Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
 ```
-./users/meinehauptmailadresse/
-|maildrop $HOME/.mailfilter_[!USERNAME!]
+./users/meinehauptmailadresse/              # Wie bisher/unverändert. Die E-Mail wird regulär an den Mailaccount zugestellt
+|maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
-Sofern man mit dem Test zufrieden ist, erstellt man später die Ordnerstruktur in der produktiven E-Mail-Adresse, erstellt die entsprechende Mailfilter-Datei für diese Adresse neu, und ändert dann in der
-vorhandenen .qmail Datei die maildrop-Mailfilter-Funktion entsprechend ab. Darüber hinaus würde dann die Zeile `./users/meinehauptmailadresse/` auskommentiert, so: `#./users/meinehauptmailadresse/`.
+Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durch:
+- Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen
+- Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen, z.B. `.mailfilter_meinehauptmailadresse`
+- Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse (z.B. `.qmail-meinehauptmailadresse`) wie folgt ändern
+```
+#./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
+|maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
+```
