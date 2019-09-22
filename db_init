@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd "`dirname $0`" || exit 1
+rm -f spam.css
+./cssutil -b -r spam.css
+rm -f nonspam.css
+./cssutil -b -r nonspam.css
+rm -rf reaver_cache
