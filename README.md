@@ -85,10 +85,11 @@ cd ..
 
 ## Spamerkennung für einen Mailaccount einrichten
 
-**Auch hier gilt: Jedes [#USERNAME#] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**
+**Auch hier gilt: Jedes [#USERNAME#] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**\
 **Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
+
 Zuerst folgende Befehle, immer jeweils angepasst, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
-```
+```Shell
 cd
 touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
 chmod 600 .mailfilter_[#USERNAME#] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
