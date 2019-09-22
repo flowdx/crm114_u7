@@ -12,7 +12,27 @@ Mit folgendem Zitat von Bernhard ist alles gesagt:
 
 ## Voraussetzungen
 
-Ihr habe 
+Es besteht ein Mailaccount, der mit 'uberspace mail user add USERNAME' erstellt wurde.
+
+In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
+Ordner:      INBOX
+              \
+               0 Spamfilter
+                \
+                 \___ als Ham lernen
+                 |
+                 |___ als Spam erkannt
+                 |
+                 |___ als Spam lernen
+                 
+Die Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
+
+export MAILUSERNAME=USERNAME
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
+
 ## Weiter geht's
 
 ```Shell
