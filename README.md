@@ -105,40 +105,26 @@ mv ./crm114_u7-master/* ./ # Die Dateien aus dem Entpackordner in den Hauptordne
 rm -r crm114_u7-master     # Den Entpackordner löschen
 chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir # Die korrekte Berechtigung für die ausführbaren Dateien vergeben
 sh db_init # Die Einrichtung der Datenbank durchführen
-cd ..
+cd ~ # Zurück in den $USER-Ordner
 
 ```
 
-## Anlernen und Aufräumen automatisieren
+## Anlernen und Aufräumen via Cronjob automatisieren
 
-### Regelmäßiges Anlernen via crontab aktivieren
+Das Script learn_maildir lernt, indem es die Mails in den Ordnern "als Ham lernen" und "als Spam lernen" analysiert. Dafür wird im Cronjob eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
 
-Das Script learn_maildir nimmt die Mails aus den Ordnern "als Ham lernen" und "als Spam lernen" und lernt sich über diese an. Dazu müssen die Mails aus dem Posteingang in den jeweils richtigen Ordner **kopiert** werden. Nach
-dem Anlernen löscht das Script die E-Mails nämlich, die in diesen Ordnern abgelegt wurden. Mit folgenden Cronjob wird das Script learn_maildir alle 20 Minuten aufgerufen.
+Das Script cache_cleanup sorgt dafür, dass die Cache-Dateien regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
-Die Crontab aufrufen mit:
+Zuerst Crontab aufrufen mit dem Bearbeitungsprogramm nano:
 ```Shell
 nano crontab -e
 ```
-und dort folgende Zeile ergänzen:
+und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 */20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
-```
-Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen.
-
-### Regelmäßig automatisches Aufräumen des Caches via crontab aktivieren
-
-cache_cleanup sorgt dafür, dass die Cache-Dateien regelmäßig entschlackt werden.
-
-Die Crontab aufrufen mit:
-```Shell
-nano crontab -e
-```
-und dort folgende Zeile ergänzen:
-```
 32 4 * * 0,3 crm114/cache_cleanup
 ```
-Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätigen.
+Datei mit nano speichern und schließen geht immer wie folgt: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
 ## Spamerkennung für einen Mailaccount einrichten
 
