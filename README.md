@@ -130,3 +130,17 @@ In die Datei folgendes eintragen, auch hier das [#USERNAME#] ersetzen. Dann mit 
 ```Shell
 |maildrop $HOME/.mailfilter_[#USERNAME#] # CHANGE!
 ```
+
+### Automatisches Anlernen via crontab aktivieren
+
+Das Script learn_maildir nimmt die Mails aus den Ordnern "als Ham lernen" und "als Spam lernen" und lernt sich über diese an. Dazu müssen die Mails aus dem Posteingang in den jeweils richtigen Ordner **kopiert** werden. Nach
+dem Anlernen löscht das Script die E-Mails nämlich, die in diesen Ordnern abgelegt wurden. Mit folgenden Cronjob wird das Script learn_maildir alle 20 Minuten aufgerufen.
+
+Die Crontab aufrufen mit:
+```Shell
+crontab -e
+```
+und dort folgende Zeile ergänzen:
+```
+*/20 * * * *	sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
+```
