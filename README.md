@@ -10,13 +10,13 @@ An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit Spam
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-## 3. WICHTIGE GRUNDLAGE: die Platzhalter-Variable [#USERNAME#]
+## 3. WICHTIGE GRUNDLAGE: die Platzhalter-Variable [!USERNAME!]
 
-In der folgenden Anleitung wird an mehreren Stellen die Platzhalter-Variable [#USERNAME#] verwendet. Diese ist **IMMER** durch einen selbstgewählten Benutzernamen zu ersetzen, und zwar unter Wegfall der eckigen Klammern
-und der Rauten!
+In der folgenden Anleitung wird an mehreren Stellen die Platzhalter-Variable [!USERNAME!] verwendet. Diese ist **IMMER** durch einen selbstgewählten Benutzernamen zu ersetzen, und zwar unter Wegfall der eckigen Klammern
+und der Ausrufezeichen!
 
 Beispiel:\
-Sofern man sich für den Benutzernamen `nureintestbenutzer` entscheidet, und der Befehl in der Anleitung `uberspace mail user add [#USERNAME#]` lautet, so muss `uberspace mail user add nureintestbenutzer`
+Sofern man sich für den Benutzernamen `nureintestbenutzer` entscheidet, und der Befehl in der Anleitung `uberspace mail user add [!USERNAME!]` lautet, so muss `uberspace mail user add nureintestbenutzer`
 eingegeben werden.
 
 ## 4. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
@@ -24,10 +24,10 @@ eingegeben werden.
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [#USERNAME#]***. Du könntest ab hier `[#USERNAME#]` z.B. konsequent durch `spamfiltertest` ersetzen. 
+**An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [!USERNAME!]***. Du könntest ab hier `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
 ### 4.1 Neuen Mailaccount anlegen
-Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [#USERNAME#]` nutzen.\
+Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
 (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
 ### 4.2 Benötigte Ordnerstruktur
@@ -48,10 +48,8 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten:
 
-Zuerst folgenden Befehl **ABGEWANDELT!** in der Shell ausführen.\
-**WICHTIG: [#USERNAME#] muss, einschließlich Rauten und der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
 ```Shell
-export MAILUSERNAME=[#USERNAME#]  # [#USERNAME#] durch den richtigen Mailaccountbenutzer ersetzen!
+export MAILUSERNAME=[!USERNAME!]
 ```
 
 Anschließend die folgenden vier Befehle in der Shell ausführen:
@@ -135,20 +133,20 @@ Dann Strg+X, ein 'y' eingeben (ohne Anführungsstriche) und mit Enter bestätige
 
 ## Spamerkennung für einen Mailaccount einrichten
 
-**Auch hier gilt: Jedes [#USERNAME#] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**\
+**Auch hier gilt: Jedes [!USERNAME!] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**\
 **Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
 
 ### .Mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
 cd
-touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-chmod 600 .mailfilter_[#USERNAME#] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
-nano .mailfilter_[#USERNAME#] # CHANGE!      # Öffnet die Datei zum Bearbeiten
+touch .mailfilter_[!USERNAME!] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 600 .mailfilter_[!USERNAME!] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .mailfilter_[!USERNAME!] # CHANGE!      # Öffnet die Datei zum Bearbeiten
 ```
 In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen, 'y' eingeben und mit Enter das Speichern bestätigen.
 ```
-MAILUSERNAME=[#USERNAME#] # CHANGE!
+MAILUSERNAME=[!USERNAME!] # CHANGE!
 MAILDIR="$HOME/users/$MAILUSERNAME"
 MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
 
@@ -172,12 +170,12 @@ Folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl
 
 ```Shell
 cd
-touch .qmail-[#USERNAME#] # CHANGE!
-chmod 644 .qmail-[#USERNAME#] # CHANGE!
-nano .qmail-[#USERNAME#] # CHANGE!
+touch .qmail-[!USERNAME!] # CHANGE!
+chmod 644 .qmail-[!USERNAME!] # CHANGE!
+nano .qmail-[!USERNAME!] # CHANGE!
 ```
-In die Datei folgendes eintragen, auch hier das [#USERNAME#] ersetzen. Dann mit Strg+X und Bestätigung speichern und schließen.
+In die Datei folgendes eintragen, auch hier das [!USERNAME!] ersetzen. Dann mit Strg+X und Bestätigung speichern und schließen.
 ```Shell
-|maildrop $HOME/.mailfilter_[#USERNAME#] # CHANGE!
+|maildrop $HOME/.mailfilter_[!USERNAME!] # CHANGE!
 ```
 
