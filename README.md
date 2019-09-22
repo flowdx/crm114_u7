@@ -13,7 +13,7 @@ Mit folgendem Zitat von Bernhard ist alles gesagt:
 ## Voraussetzung: Mailaccount mit korrekter Ordnerstruktur
 
 Es besteht ein Mailaccount, der mit 'uberspace mail user add [USERNAME]' erstellt wurde.
-(siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
+ (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
