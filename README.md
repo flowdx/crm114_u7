@@ -96,7 +96,7 @@ crontab -e
 ```
 und dort folgende Zeile ergänzen:
 ```
-*/20 * * * *	sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
+*/20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 ```
 Speichern und schließen.
 
@@ -110,7 +110,7 @@ crontab -e
 ```
 und dort folgende Zeile ergänzen:
 ```
-32 4 * * 0,3	crm114/cache_cleanup
+32 4 * * 0,3 crm114/cache_cleanup
 ```
 Speichern und schließen.
 
