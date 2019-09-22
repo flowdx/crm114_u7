@@ -111,7 +111,7 @@ cd ~ # Zurück in den $USER-Ordner
 
 ```
 
-## Anlernen und Aufräumen via Cronjob automatisieren
+## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
 Das Script learn_maildir lernt, indem es die Mails in den Ordnern "als Ham lernen" und "als Spam lernen" analysiert. Dafür wird im Cronjob eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
 
@@ -128,7 +128,7 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 Nun Speichern und Schließen! Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-## Spamerkennung für einen Mailaccount einrichten
+## 8. Spamerkennung für einen Mailaccount einrichten
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
