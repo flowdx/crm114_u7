@@ -12,7 +12,8 @@ Mit folgendem Zitat von Bernhard ist alles gesagt:
 
 ## Voraussetzung: Mailaccount mit korrekter Ordnerstruktur
 
-Es besteht ein Mailaccount, der mit 'uberspace mail user add [USERNAME]' erstellt wurde. (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
+Es besteht ein Mailaccount, der mit 'uberspace mail user add [USERNAME]' erstellt wurde.
+(siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
@@ -29,7 +30,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 Die Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 
 Zuerst folgenden Befehl in der Shell ausführen.
-*WICHTIG: [USERNAME] muss, einschließlich der [], durch den Benutzernamen des Mailaccount ersetzt werden!*
+**WICHTIG: [USERNAME] muss, einschließlich der [], durch den Benutzernamen des Mailaccount ersetzt werden!**
 ```Shell
 export MAILUSERNAME=[USERNAME]
 ```
