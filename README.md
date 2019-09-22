@@ -10,13 +10,16 @@ An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit Spam
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
+## Voraussetzungen
+
+Ihr habe 
 ## Weiter geht's
 
 ```Shell
-mkdir -p ~/crm114
-cd ~/crm114
-curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz
-cd crm114-20*
+mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
+cd ~/crm114             # Wechsle in den Ordner 'crm114'
+curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz # Kopiere und entpacke CRM114
+cd crm114-20*           # Wechsle in den CRM114-Programmordner
 curl -sSL https://laurikari.net/tre/tre-0.8.0.tar.bz2 | tar xj
 cd tre*
 ./configure --prefix "`cd ..; pwd`/tre" --enable-static
@@ -33,7 +36,12 @@ for i in mailfilter.cf blacklist.mfp priolist.mfp rewrites.mfp; do cp -p $i ../$
 cp -p whitelist.mfp.example ..
 cd ..
 rm -r crm114-20*
-
-curl -sSL https://www.bernhard-ehlers.de/crm114/crm114-config.tar.gz | tar xz
+curl -sSL https://github.com/flowdx/crm114_u7/archive/master.zip -o master.zip
+unzip master.zip
+rm master.zip
+mv ./crm114_u7-master/* ./
+rm -r crm114_u7-master
+chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir
 sh db_init
+cd ..
 ```
