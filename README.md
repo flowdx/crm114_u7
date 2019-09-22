@@ -65,12 +65,13 @@ for i in mailfilter.cf blacklist.mfp priolist.mfp rewrites.mfp; do cp -p $i ../$
 cp -p whitelist.mfp.example ..
 cd ..
 rm -r crm114-20*
-curl -sSL https://github.com/flowdx/crm114_u7/archive/master.zip -o master.zip
-unzip master.zip
-rm master.zip
-mv ./crm114_u7-master/* ./
-rm -r crm114_u7-master
-chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir
-sh db_init
+curl -sSL https://github.com/flowdx/crm114_u7/archive/master.zip -o master.zip # Die Konfigurationsdateien aus diesem Github-Repository herunterladen
+unzip master.zip # Das gezippte Repository entpacken
+rm master.zip    # Das gezippte Repository löschen
+mv ./crm114_u7-master/* ./ # Die Dateien aus dem Entpackordner in den Hauptordner verschieben
+rm -r crm114_u7-master     # Den Entpackordner löschen
+chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir # Die korrekte Berechtigung für die ausführbaren Dateien vergeben
+sh db_init # Die Einrichtung der Datenbank durchführen
 cd ..
+
 ```
