@@ -32,7 +32,7 @@ Diese Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 Zuerst folgenden Befehl **ABGEWANDELT!** in der Shell ausführen.\
 **WICHTIG: [USERNAME] muss, einschließlich der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
 ```Shell
-export MAILUSERNAME=[USERNAME]
+export MAILUSERNAME=[USERNAME]  # [USERNAME] durch den richtigen Mailaccountbenutzer ersetzen!
 ```
 
 Anschließend die folgenden vier Befehle in der Shell ausführen:
