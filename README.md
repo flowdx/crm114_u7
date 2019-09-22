@@ -10,21 +10,21 @@ An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit Spam
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-## Voraussetzungen
+## Voraussetzung: Mailaccount mit korrekter Ordnerstruktur
 
 Es besteht ein Mailaccount, der mit 'uberspace mail user add USERNAME' erstellt wurde.
 
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
-             INBOX
-              \
-               0 Spamfilter
-                \
-                 \___ als Ham lernen
-                 |
-                 |___ als Spam erkannt
-                 |
-                 |___ als Spam lernen
+  INBOX
+   \
+    0 Spamfilter
+     \
+      \___ als Ham lernen
+      |
+      |___ als Spam erkannt
+      |
+      |___ als Spam lernen
 ```                 
 Die Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 
