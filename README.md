@@ -30,9 +30,9 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 Diese Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 
 Zuerst folgenden Befehl **ABGEWANDELT!** in der Shell ausführen.\
-**WICHTIG: [USERNAME] muss, einschließlich der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
+**WICHTIG: [#USERNAME#] muss, einschließlich Rauten und der eckigen Klammern, durch den Benutzernamen des Mailaccount ersetzt werden!**
 ```Shell
-export MAILUSERNAME=[USERNAME]  # [USERNAME] durch den richtigen Mailaccountbenutzer ersetzen!
+export MAILUSERNAME=[#USERNAME#]  # [#USERNAME#] durch den richtigen Mailaccountbenutzer ersetzen!
 ```
 
 Anschließend die folgenden vier Befehle in der Shell ausführen:
@@ -83,16 +83,20 @@ cd ..
 
 ```
 
-## Spamerkennung für den Mailaccount einrichten
+## Spamerkennung für einen Mailaccount einrichten
+
+**Auch hier gilt: Jedes [#USERNAME#] bitte durch den Benutzernamen der E-Mail-Adresse ersetzen!**
+**Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
+Zuerst folgende Befehle, immer jeweils angepasst, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```
 cd
-touch .mailfilter_[USERNAME] # CHANGE!
-chmod 600 .mailfilter_[USERNAME] # CHANGE!
-nano .mailfilter_[USERNAME] # CHANGE!
+touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 600 .mailfilter_[#USERNAME#] # CHANGE! # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .mailfilter_[#USERNAME#] # CHANGE!      # Öffnet die Datei zum Bearbeiten
 ```
-
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Ändern mit Strg+X schließen und das Speichern bestätigen.
 ```
-MAILUSERNAME=[USERNAME] # CHANGE!
+MAILUSERNAME=[#USERNAME#] # CHANGE!
 MAILDIR="$HOME/users/$MAILUSERNAME"
 MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
 
@@ -112,10 +116,10 @@ to "$MAILDIR"
 ```
 ```
 cd
-touch .qmail-[USERNAME] # CHANGE!
-chmod 644 .qmail-[USERNAME] # CHANGE!
-nano .qmail-[USERNAME] # CHANGE!
+touch .qmail-[#USERNAME#] # CHANGE!
+chmod 644 .qmail-[#USERNAME#] # CHANGE!
+nano .qmail-[#USERNAME#] # CHANGE!
 ```
 ```
-|maildrop $HOME/.mailfilter_[USERNAME] # CHANGE!
+|maildrop $HOME/.mailfilter_[#USERNAME#] # CHANGE!
 ```
