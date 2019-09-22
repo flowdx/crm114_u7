@@ -89,7 +89,7 @@ cd ..
 **Und: Die folgenden Schritte sind so nur gültig, wenn die jeweiligen qmail- und die mailfilter-Dateien bisher noch nicht vorhanden sind.**
 
 ### .Mailfilter-Datei erstellen
-Zuerst folgende Befehle, immer jeweils angepasst, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
+Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
 cd
 touch .mailfilter_[#USERNAME#] # CHANGE!     # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
@@ -117,12 +117,16 @@ if ($SIZE < 2000000)
 to "$MAILDIR"       
 ```
 ### .qmail-Datei erstellen 
-```
+
+Folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
+
+```Shell
 cd
 touch .qmail-[#USERNAME#] # CHANGE!
 chmod 644 .qmail-[#USERNAME#] # CHANGE!
 nano .qmail-[#USERNAME#] # CHANGE!
 ```
-```
+In die Datei folgendes eintragen, auch hier das [#USERNAME#] ersetzen. Dann mit Strg+X und Bestätigung speichern und schließen.
+```Shell
 |maildrop $HOME/.mailfilter_[#USERNAME#] # CHANGE!
 ```
