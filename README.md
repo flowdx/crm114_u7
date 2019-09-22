@@ -7,8 +7,10 @@ An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit Spam
 
 ## CRM114
 
-Zitat Bernhard: "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
-Damit ist wohl alles gesagt.
+Mit folgendem Zitat von Bernhard ist alles gesagt:
+> "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
+
+## Weiter geht's
 
 ```Shell
 mkdir -p ~/crm114
