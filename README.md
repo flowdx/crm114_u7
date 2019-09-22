@@ -132,15 +132,16 @@ Nun Speichern und Schließen! Mit nano geht das immer so: Tastenkombination Strg
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
-### .mailfilter-Datei erstellen
+### 8.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
-cd
+cd ~
 touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
 chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
 nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit Strg+X, `y`, Enter.
+Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
 ```
 MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
 MAILDIR="$HOME/users/$MAILUSERNAME"
@@ -160,17 +161,18 @@ if ($SIZE < 2000000)
 }
 to "$MAILDIR"       
 ```
-### .qmail-Datei erstellen 
+### 8.2 .qmail-Datei erstellen 
 
-Folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
+Folgende Befehle, **immer jeweils angepasst**, ausführen.
 
 ```Shell
-cd
+cd ~
 touch .qmail-[!USERNAME!] # CHANGE!
 chmod 644 .qmail-[!USERNAME!] # CHANGE!
 nano .qmail-[!USERNAME!] # CHANGE!
 ```
-In die Datei folgendes eintragen, auch hier das [!USERNAME!] ersetzen. Dann mit Strg+X und Bestätigung speichern und schließen.
+Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
+In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
 ```Shell
 |maildrop $HOME/.mailfilter_[!USERNAME!] # CHANGE!
 ```
