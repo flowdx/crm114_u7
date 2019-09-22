@@ -28,8 +28,13 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```                 
 Die Ordnerstruktur erstellt man komfortabel mit folgenden Befehlen:
 
+Zuerst folgenden Befehl in der Shell ausführen. WICHTIG: [USERNAME] muss, einschließlich der [], durch den Benutzernamen des Mailaccount ersetzt werden!
 ```Shell
-export MAILUSERNAME=USERNAME
+export MAILUSERNAME=[USERNAME]
+```
+
+Anschließend die folgenden vier Befehle in der Shell ausführen:
+```Shell
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
