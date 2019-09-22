@@ -176,7 +176,7 @@ In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpas
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
 
-### 8.3 OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
+## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
 Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und zusätzlich eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
 zuzustellen. So kann das Verhalten des Spamfilters bei reel ankommenden Mails getestet werden, ohne in die produktive E-Mail-Adresse einzugreifen.
@@ -189,6 +189,7 @@ Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
 |maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
+## 10. OPTIONAL: Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durch:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen
 - Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen, z.B. `.mailfilter_meinehauptmailadresse`
