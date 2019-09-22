@@ -84,3 +84,30 @@ cd ..
 ```
 
 ## Spamerkennung für den Mailaccount einrichten
+```
+cd
+touch .mailfilter_[USERNAME]
+chmod 600 .mailfilter_[USERNAME]
+nano .mailfilter_[USERNAME]
+```
+
+```
+MAILUSERNAME=[USERNAME]
+MAILDIR="$HOME/users/$MAILUSERNAME"
+MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
+
+# Show mail to Bayes-Spamfilter (CRM114) if it's not larger than 2MB (=2000000 Bytes)
+if ($SIZE < 2000000)
+{
+    xfilter "'$HOME/crm114/crm114' -u '$HOME/crm114' mailreaver.crm --"
+    
+    # if it's classified as spam
+    if (/^X-CRM114-Status: *SPAM/:h)
+    {
+        # save it to spamfolder
+        to "$MAILDIRSPAM"
+    }
+}
+to "$MAILDIR"       
+
+```
