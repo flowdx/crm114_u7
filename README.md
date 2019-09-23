@@ -115,9 +115,11 @@ cd ~ # Zurück in den $USER-Ordner
 
 ## 6. Anlernen und Aufräumen via Cronjob automatisieren
 
-Das Script learn_maildir lernt, indem es die Mails in den Ordnern "als Ham lernen" und "als Spam lernen" analysiert. Dafür wird im Cronjob eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
+CRM114 lernt, indem dem Programm, durch den Benutzer (also dich!), eingegangene E-Mails entweder als Spam (im Ordner "als Spam lernen") oder Ham ("als Ham lernen") präsentiert werden.
 
-Das Script cache_cleanup sorgt dafür, dass die Cache-Dateien regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
+Das Script 'learn_maildir' prüft alle vorhandenen Mailaccounts auf diese beiden Ordner. Wird ein Ordner gefunden und sind darin Mails vorhanden, dann werden diese durch CRM114 verarbeitet und anschließend gelöscht. Im Cronjob wird eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
+
+Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
 Zuerst Crontab aufrufen mit dem Bearbeitungsprogramm nano:
 ```Shell
