@@ -37,8 +37,8 @@ export VISUAL='nano'
 ```
 Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-**Jetzt, ganz wichtig: SSH-Verbindung beenden**, und anschließend neu verbinden. Nur so wird die Umstellung des Standardeditors auf nano aktiv.\
-Dann weiter mit Punkt 5.
+**Jetzt, ganz wichtig: SSH-Verbindung beenden**, und anschließend neu verbinden.\
+Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
 
 ## 5. Voraussetzung #2: Ein Mailaccount mit korrekter Ordnerstruktur
 
