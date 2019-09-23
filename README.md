@@ -29,7 +29,7 @@ eingegeben werden.
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**Hier noch ein letztes mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]""***\
+**Hier noch ein letztes mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
 Du könntest ab hier z.B. `[!USERNAME!]` konsequent durch `spamfiltertest` ersetzen. 
 
 ### 4.1 Neuen Mailaccount anlegen
