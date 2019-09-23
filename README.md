@@ -74,10 +74,10 @@ Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blend
 
 ## 5. Installation & Einrichtung CRM114
 
-Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114.\
-(Dazu wird u.a. auch TRE (The free and portable approximate regex matching library) von Laurikari installiert sowie Konfigurationsdateien hier aus diesem Repository gezogen.)
+Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
+(Dazu wird u.a. auch TRE (The free and portable approximate regex matching library) von Laurikari installiert sowie Konfigurationsdateien und Scripte hier aus diesem Repository gezogen.)
 
-**Wichtig**: Sofern dieser Ordner bereits existiert wird er ohne Rückfrage überschrieben.
+**Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
 Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
 
