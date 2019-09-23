@@ -9,31 +9,33 @@ An dieser Stelle noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit Spam
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-## 3. WICHTIGE GRUNDLAGE: die Platzhalter-Variable [!USERNAME!]
+## 3. Grundlagen
+
+### 3.1 Die Shell benutzen ;)
+
+Alle Befehle hier werden via SSH-Zugriff in der Shell eingegeben. Darüber hinaus werden Dateien und Crontab mit nano bearbeitet.
+
+### 3.2 Die Platzhalter-Variable [!USERNAME!]
 
 In der folgenden Anleitung wird an mehreren Stellen die Platzhalter-Variable [!USERNAME!] verwendet. Diese ist **IMMER** durch einen selbstgewählten Benutzernamen zu ersetzen, und zwar unter Wegfall der eckigen Klammern
 und der Ausrufezeichen!
 
-Beispiel:\
-Sofern man sich für den Benutzernamen `nureintestbenutzer` entscheidet, und der Befehl in der Anleitung `uberspace mail user add [!USERNAME!]` lautet, so muss `uberspace mail user add nureintestbenutzer`
+**Beispiel**:\
+Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingab muss dann lauten: `uberspace mail user add nureintestbenutzer`
 eingegeben werden.
 
-## 4. WICHTIGE GRUNDLAGE: Alle Befehle hier werden via SSH-Zugriff in der Bash-Konsole eingegeben.
-
-Es werden Bash-Befehle genutzt sowie Dateien und die crontab via nano bearbeitet.
-
-## 5. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
+## 4. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
 **An dieser Stelle einmal noch der Verweis auf** ***Abschnitt 3. 'WICHTIGE GRUNDLAGE: die Platzhalter-Variable [!USERNAME!]***. Du könntest ab hier `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
-### 5.1 Neuen Mailaccount anlegen
+### 4.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
 (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-### 5.2 Benötigte Ordnerstruktur
+### 4.2 Benötigte Ordnerstruktur
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
   INBOX
@@ -47,7 +49,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |___ als Spam lernen
 ```
 
-### 5.3 Diese geforderte Ordnerstruktur einrichten
+### 4.3 Diese geforderte Ordnerstruktur einrichten
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
@@ -69,7 +71,7 @@ Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
 Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen bzw. zu abbonieren, bevor sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner wie folgt ein: `Settings > Folders` aufrufen und über die jeweiligen Augen-Icons einblenden.
 
-## 6. Installation & Einrichtung CRM114
+## 5. Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner crm114.\
 (Dazu wird u.a. auch TRE (The free and portable approximate regex matching library) von Laurikari installiert sowie Konfigurationsdateien hier aus diesem Repository gezogen.)
@@ -110,7 +112,7 @@ cd ~ # Zurück in den $USER-Ordner
 
 ```
 
-## 7. Anlernen und Aufräumen via Cronjob automatisieren
+## 6. Anlernen und Aufräumen via Cronjob automatisieren
 
 Das Script learn_maildir lernt, indem es die Mails in den Ordnern "als Ham lernen" und "als Spam lernen" analysiert. Dafür wird im Cronjob eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
 
@@ -125,13 +127,13 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 */20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 32 4 * * 0,3 crm114/cache_cleanup
 ```
-Nun Speichern und Schließen! Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
+Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-## 8. Spamerkennung für einen Mailaccount einrichten
+## 7. Spamerkennung für einen Mailaccount einrichten
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
-### 8.1 .mailfilter-Datei erstellen
+### 7.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
 cd ~
@@ -139,8 +141,10 @@ touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie
 chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
 nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
-Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
+Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
+
+Den folgenden Text in den nun offenen nano-Editor eingeben:\
+(Copy&Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
 ```
 MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
 MAILDIR="$HOME/users/$MAILUSERNAME"
@@ -160,7 +164,9 @@ if ($SIZE < 2000000)
 }
 to "$MAILDIR"       
 ```
-### 8.2 .qmail-Datei erstellen 
+Nun speichern und schließen wie gewohnt mit: Strg+X, `y`, Enter.
+
+### 7.2 .qmail-Datei erstellen 
 
 Folgende Befehle, **immer jeweils angepasst**, ausführen.
 
@@ -170,13 +176,16 @@ touch .qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch 
 chmod 644 .qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
 nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 ```
-Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.\
-In die Datei folgendes eintragen, Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen! Nach dem Anpassen Speichern & Beenden mit: Strg+X, `y`, Enter.
+Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
+
+Den folgenden Text, ist nur eine Zeile, in den nun offenen nano-Editor eingeben:\
+(Copy&Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
 ```Shell
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
+Nun speichern und schließen wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
+## 8. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
 Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
 zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, aber ohne in die produktive E-Mail-Adresse einzugreifen.
@@ -189,7 +198,7 @@ Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
 |maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
-## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
+## 9. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durch:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen
 - Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen, z.B. `.mailfilter_meinehauptmailadresse`
