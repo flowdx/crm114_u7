@@ -29,8 +29,8 @@ eingegeben werden.
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**Hier noch ein letztes mal der Verweis auf:** ***3.2 Die Platzhalter-Variable [!USERNAME!]***.\
-Du könntest ab hier `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
+**Hier noch ein letztes mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]""***\
+Du könntest ab hier z.B. `[!USERNAME!]` konsequent durch `spamfiltertest` ersetzen. 
 
 ### 4.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
