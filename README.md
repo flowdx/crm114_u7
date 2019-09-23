@@ -139,7 +139,7 @@ Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regel
 
 Zuerst Crontab aufrufen mit dem Bearbeitungsprogramm nano:
 ```Shell
-nano crontab -e
+crontab -e
 ```
 und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
