@@ -22,7 +22,6 @@ und der Ausrufezeichen!
 
 **Beispiel**:\
 Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingabe muss dann lauten: `uberspace mail user add nureintestbenutzer`
-eingegeben werden.
 
 ## 4. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
