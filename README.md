@@ -201,12 +201,12 @@ nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
-Den folgenden Text, ist nur eine Zeile, in den nun offenen nano-Editor eingeben:\
-(Copy & Paste ist möglich. Auch hier das Anpassen der einen Zeile nicht vergessen!)
+Den folgenden Text in den nun offenen nano-Editor eingeben:\
+(Copy & Paste ist möglich. Auch hier das Anpassen der Zeile nicht vergessen!)
 ```Shell
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
-Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
+Speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
