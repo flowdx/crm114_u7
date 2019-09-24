@@ -203,7 +203,7 @@ Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text in den nun offenen nano-Editor eingeben:\
 (Copy & Paste ist möglich. Auch hier das Anpassen der Zeile nicht vergessen!)
-```Shell
+```
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
 Speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
