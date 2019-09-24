@@ -1,7 +1,7 @@
 # Lernenden Spamfilter auf Uberspace7 selbst betreiben 
 Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blogtext und seinen Config-Dateien. Er gab mir die Erlaubnis, sie als Grundlage zu verwenden.
 
-# DIESES TUTORIAL BEFINDET SICH GERADE NOCH IM AUFBAU
+# DIESES TUTORIAL BEFINDET SICH NOCH IM AUFBAU!
 
 ## 1. Hintergrund
 Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Es ist möglich, via qmail und mailfilter, auch bei niedrigeren Rspamd-Scores eigene Verarbeitungsschritte einzubauen. Wer aber Spam effektiv ausfiltern möchte, der benötigt einen trainierbaren Spamfilter, der in viele Mailclients fest integriert ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift, wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
@@ -97,7 +97,7 @@ Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blend
 ## 6. Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
-Installiert werden: CRM114 und [TRE](https://laurikari.net/tre/) ('The free and portable approximate regex matching library' von Laurikari) sowie Konfigurationsdateien und Scripte hier aus diesem Repository.
+Installiert werden: [CRM114](http://crm114.sourceforge.net) und [TRE](https://laurikari.net/tre/) ('The free and portable approximate regex matching library' von Laurikari) sowie Konfigurationsdateien und Scripte hier aus diesem Repository.
 
 **Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
@@ -137,7 +137,7 @@ cd ~ # Zurück in den $USER-Ordner
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
-Das Script 'learn_maildir' geht bei Aufruf immer alle Mailaccounts des Uberspace' durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern Mails vorhanden sind und zeigst sie CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deine Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
+Das Script 'learn_maildir' geht bei Aufruf immer alle Mailaccounts des Uberspace durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern Mails vorhanden sind und zeigst sie CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deine Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
 
 Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
