@@ -12,7 +12,7 @@ Noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit SpamAssassin (mit int
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-Den von den Ubernauten bereitgestellten Rspamd-Score nutze ich konsequent garnicht, und ihn zu verwenden ist meinem Empfinden nach durch den Betrieb von CRM114 auch nicht notwendig.
+Der Rspamd-Score den die Ubernauten bereitstellen wird im Rahmen dieses Tutorials nicht verwendet. CRM114 verrichtet bei mir seine Arbeit so gut, dass mir dies nicht notwendig erscheint. Eine Kombination aus CRM114 und Rspamd ist aber natürlich möglich, wird hier aber nicht weiter beschrieben.
 
 ## 3. Grundlagen
 
