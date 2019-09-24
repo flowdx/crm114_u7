@@ -225,8 +225,8 @@ Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainiere
 ## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern man mit dem Testverlauf zufrieden ist, führt man später folgende Schritte durch:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
-- Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen oder, wenn bereits vorhanden, diese entsprechend ergänzen.
-- Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse (z.B. `.qmail-meinehauptmailadresse`) wie folgt ändern
+- Eine eigene Mailfilter-Datei für die produktive E-Mail-Adresse erstellen und anpassen oder, wenn bereits vorhanden, die vorhandene Mailfilter-Datei entsprechend anpassen.
+- Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse so einstellen, dass Mails nicht mehr direkt in den Mailaccount zugestellt werden, sondern stattdessen über die zugehörige Mailfilter-Datei verarbeitet werden. Das könnte z.B. wie folgt aussehen, für die Datei `.qmail-meinehauptmailadresse`: 
 ```
 #./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
 |maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
