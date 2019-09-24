@@ -29,8 +29,8 @@ Sofern nicht eh schon geschehen, bitte jetzt nano als Standard-Editor festlegen.
 
 Dazu folgende Befehle ausführen:
 ```Shell
-$ cd
-$ nano .bash_profile
+cd
+nano .bash_profile
 ```
 
 Nun öffnet sich die Datei .bash_profile. Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
@@ -75,15 +75,15 @@ Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel ein
 Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde:
 
 ```Shell
-$ export MAILUSERNAME=[!USERNAME!]
+export MAILUSERNAME=[!USERNAME!]
 ```
 
 Anschließend die folgenden vier Befehle in der Shell ausführen um die Ordner in dem Mailaccount anzulegen:
 ```Shell
-$ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
-$ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
-$ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
-$ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen"
+test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
 ```
 
 Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
@@ -100,35 +100,35 @@ Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm
 Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
 
 ```Shell
-$ mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
-$ cd ~/crm114             # Wechsle in den Ordner 'crm114'
-$ curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz # Kopiere und entpacke $ CRM114
-$ cd crm114-20*           # Wechsle in den CRM114-Programmordner
-$ curl -sSL https://laurikari.net/tre/tre-0.8.0.tar.bz2 | tar xj
-$ cd tre*
-$ ./configure --prefix "`cd ..; pwd`/tre" --enable-static
-$ make install
-$ cd ..
-$ sed -i 's/^LDFLAGS/#LDFLAGS/' Makefile
-$ sed -i 's|^\([^#].*\)-ltre|\1tre/lib/libtre.a|' Makefile
-$ CFLAGS="-std=gnu89 -Wno-unused-but-set-variable -I tre/include" LDFLAGS="$CFLAGS" make
-$ strip -s crm114 cssdiff cssmerge cssutil osbf-util
-$ cp -p crm114 cssdiff cssmerge cssutil osbf-util ..
-$ cp -p mailfilter.crm maillib.crm mailreaver.crm mailtrainer.crm rewriteutil.crm shuffle.crm ..
-$ chmod 755 ../*.crm
-$ for i in mailfilter.cf blacklist.mfp priolist.mfp rewrites.mfp; do cp -p $i ../$i.example; done
-$ cp -p whitelist.mfp.example ..
-$ cd ..
-$ rm -r crm114-20*
-$ curl -sSL https://github.com/flowdx/crm114_u7/archive/master.zip -o master.zip # Die Konfigurationsdateien aus diesem Github-Repository herunterladen
-$ unzip master.zip # Das gezippte Repository entpacken
-$ rm master.zip    # Das gezippte Repository löschen
-$ mv ./crm114_u7-master/* ./ # Die Dateien aus dem Entpackordner in den Hauptordner verschieben
-$ rm -r crm114_u7-master     # Den Entpackordner löschen
-$ chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir # Die korrekte Berechtigung für die ausführbaren Dateien vergeben
-$ sh db_init # Die Einrichtung der Datenbank durchführen
-$ cd ~ # Zurück in den $USER-Ordner
-$ 
+mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
+cd ~/crm114             # Wechsle in den Ordner 'crm114'
+curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz # Kopiere und entpacke $ CRM114
+cd crm114-20*           # Wechsle in den CRM114-Programmordner
+curl -sSL https://laurikari.net/tre/tre-0.8.0.tar.bz2 | tar xj
+cd tre*
+./configure --prefix "`cd ..; pwd`/tre" --enable-static
+make install
+cd ..
+sed -i 's/^LDFLAGS/#LDFLAGS/' Makefile
+sed -i 's|^\([^#].*\)-ltre|\1tre/lib/libtre.a|' Makefile
+CFLAGS="-std=gnu89 -Wno-unused-but-set-variable -I tre/include" LDFLAGS="$CFLAGS" make
+strip -s crm114 cssdiff cssmerge cssutil osbf-util
+cp -p crm114 cssdiff cssmerge cssutil osbf-util ..
+cp -p mailfilter.crm maillib.crm mailreaver.crm mailtrainer.crm rewriteutil.crm shuffle.crm ..
+chmod 755 ../*.crm
+for i in mailfilter.cf blacklist.mfp priolist.mfp rewrites.mfp; do cp -p $i ../$i.example; done
+cp -p whitelist.mfp.example ..
+cd ..
+rm -r crm114-20*
+curl -sSL https://github.com/flowdx/crm114_u7/archive/master.zip -o master.zip # Die Konfigurationsdateien aus diesem Github-Repository herunterladen
+unzip master.zip # Das gezippte Repository entpacken
+rm master.zip    # Das gezippte Repository löschen
+mv ./crm114_u7-master/* ./ # Die Dateien aus dem Entpackordner in den Hauptordner verschieben
+rm -r crm114_u7-master     # Den Entpackordner löschen
+chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir # Die korrekte Berechtigung für die ausführbaren Dateien vergeben
+sh db_init # Die Einrichtung der Datenbank durchführen
+cd ~ # Zurück in den $USER-Ordner
+
 ```
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
@@ -141,7 +141,7 @@ Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regel
 
 Zuerst Crontab aufrufen mit dem Bearbeitungsprogramm nano:
 ```Shell
-$ crontab -e
+crontab -e
 ```
 und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
@@ -157,10 +157,10 @@ Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg
 ### 8.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
 ```Shell
-$ cd ~
-$ touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-$ chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
-$ nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
+cd ~
+touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
@@ -192,10 +192,10 @@ Nun speichern und schließen wie gewohnt mit: Strg+X, `y`, Enter.
 Folgende Befehle, **immer jeweils angepasst**, ausführen.
 
 ```Shell
-$ cd ~
-$ touch .qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-$ chmod 644 .qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
-$ nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
+cd ~
+touch .qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 644 .qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
