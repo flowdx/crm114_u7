@@ -25,7 +25,7 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 
 ## 4. nano zum Standardeditor machen
 
-Sofern nicht eh schon geschehen, bitte jetzt nano als Standard-Editor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben.
+Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben. Wenn gewünscht, kann dieser Schritt nach diesem Tutorial wieder rückgängig gemacht werden.
 
 Dazu folgende Befehle in der Shell ausführen:
 ```Shell
@@ -33,6 +33,7 @@ cd
 nano .bash_profile
 ```
 Durch den nano-Befehl öffnet sich die Datei .bash_profile.
+
 Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
 ```
 export VISUAL='nano'
@@ -48,8 +49,8 @@ Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**Hier noch ein letztes mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
-Du könntest ab hier z.B. `[!USERNAME!]` konsequent durch `spamfiltertest` ersetzen. 
+**Hier der wichtige Verweis Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
+Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
 ### 5.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
