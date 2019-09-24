@@ -88,21 +88,21 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam lernen" || maildirmake
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt"
 ```
 
-Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
-Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen bzw. zu abbonieren, bevor sie im Mailclient auftauchen!\
-Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
+Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
+Sollte dies nicht der Fall sein, ist es nötig, die neu angelegte Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonieren, damit sie im Mailclient auftauchen!\
+Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
 ## 6. Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
-(Dazu wird u.a. auch TRE (The free and portable approximate regex matching library) von Laurikari installiert sowie Konfigurationsdateien und Scripte hier aus diesem Repository gezogen.)
+Installiert werden: CRM114 und [TRE](https://laurikari.net/tre/) ('The free and portable approximate regex matching library' von Laurikari) sowie Konfigurationsdateien und Scripte hier aus diesem Repository.
 
 **Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
-Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy & Paste auszuführen, sofern euer SSH-Client das unterstützt.
+Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern euer SSH-Client das unterstützt.
 
 ```Shell
-mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
+mkdir -p ~/crm114       # Erzeuge Ordner 'crm114'
 cd ~/crm114             # Wechsle in den Ordner 'crm114'
 curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz # Kopiere und entpacke $ CRM114
 cd crm114-20*           # Wechsle in den CRM114-Programmordner
