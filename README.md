@@ -27,17 +27,18 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 
 Sofern nicht eh schon geschehen, bitte jetzt nano als Standard-Editor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben.
 
-Dazu folgende Befehle ausführen:
+Dazu folgende Befehle in der Shell ausführen:
 ```Shell
 cd
 nano .bash_profile
 ```
-
-Nun öffnet sich die Datei .bash_profile. Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
+Durch den nano-Befehl öffnet sich die Datei .bash_profile.
+Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
 ```
 export VISUAL='nano'
 ```
-Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
+Nun speichern und schließen.
+Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
 **Jetzt, ganz wichtig: SSH-Verbindung beenden**, und anschließend neu verbinden.\
 Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
@@ -72,8 +73,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
-Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde:
-
+Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde. Dazu folgendes, entsprechend angepasst, in die Shell eingeben:
 ```Shell
 export MAILUSERNAME=[!USERNAME!]
 ```
@@ -88,7 +88,7 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmak
 
 Prüft nun in eurem Mailclient, ob die Ordner erstellt wurden!\
 Häufig ist es nötig, neu angelegte Ordner in den Einstellungen erst noch manuell sichtbar zu machen bzw. zu abbonieren, bevor sie im Mailclient auftauchen!\
-Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner wie folgt ein: `Settings > Folders` aufrufen und über die jeweiligen Augen-Icons einblenden.
+Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man weitere Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
 ## 6. Installation & Einrichtung CRM114
 
@@ -97,7 +97,7 @@ Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm
 
 **Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
-Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy&Paste auszuführen.
+Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach wäre es möglich, den folgenden Block komplett via Copy & Paste auszuführen, sofern euer SSH-Client das unterstützt.
 
 ```Shell
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114' (Wenn vorhanden wird ohne Rückfrage überschrieben)
@@ -139,7 +139,7 @@ Das Script 'learn_maildir' prüft alle vorhandenen Mailaccounts auf diese beiden
 
 Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
-Zuerst Crontab aufrufen mit dem Bearbeitungsprogramm nano:
+Zuerst die Crontab zum Bearbeiten aufrufen mit folgendem Shell-Befehl:
 ```Shell
 crontab -e
 ```
@@ -148,14 +148,14 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 */20 * * * * sleep $((RANDOM \% 40 + 10)); crm114/learn_maildir
 32 4 * * 0,3 crm114/cache_cleanup
 ```
-Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
+Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ## 8. Spamerkennung für einen Mailaccount einrichten
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
 ### 8.1 .mailfilter-Datei erstellen
-Zuerst folgende Befehle, **immer jeweils angepasst**, ausführen. Durch den nano-Befehl öffnet sich die Texteingabe für die Datei.
+Zuerst folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 ```Shell
 cd ~
 touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
@@ -164,8 +164,8 @@ nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
-Den folgenden Text in den nun offenen nano-Editor eingeben:\
-(Copy&Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
+Den folgenden Text in die nun geöffnete Datei eingeben:\
+(Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
 ```
 MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
 MAILDIR="$HOME/users/$MAILUSERNAME"
@@ -185,11 +185,11 @@ if ($SIZE < 2000000)
 }
 to "$MAILDIR"       
 ```
-Nun speichern und schließen wie gewohnt mit: Strg+X, `y`, Enter.
+Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ### 8.2 .qmail-Datei erstellen 
 
-Folgende Befehle, **immer jeweils angepasst**, ausführen.
+Folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 
 ```Shell
 cd ~
@@ -204,7 +204,7 @@ Den folgenden Text, ist nur eine Zeile, in den nun offenen nano-Editor eingeben:
 ```Shell
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
-Nun speichern und schließen wie gewohnt mit: Strg+X, `y`, Enter.
+Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
