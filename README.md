@@ -89,7 +89,7 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmak
 ```
 
 Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
-Sollte dies nicht der Fall sein, ist es nötig, die neu angelegte Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonieren, damit sie im Mailclient auftauchen!\
+Sollte dies nicht der Fall sein, ist es nötig, die neu angelegte Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonnieren, damit sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
 ## 6. Installation & Einrichtung CRM114
