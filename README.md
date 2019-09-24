@@ -202,7 +202,7 @@ nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text, ist nur eine Zeile, in den nun offenen nano-Editor eingeben:\
-(Copy&Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
+(Copy & Paste ist möglich. Auch hier das Anpassen der einen Zeile nicht vergessen!)
 ```Shell
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
@@ -210,21 +210,22 @@ Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
-Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** eine Weiterleitung auf die Test-E-Mail-Adresse mit Spamfilterung
-zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, aber ohne in die produktive E-Mail-Adresse einzugreifen.
+Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden ohne in Abläufe der produktiven E-Mail-Adresse einzugreifen.
 
-Dafür die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um den Verweise auf maildrop mit dem mailfilter **ergänzen**:
+Um dies zu erreichen die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um die Zustellung an die .mailfilter-Datei **ergänzen**.
 
-Die Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
+Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen:
 ```
-./users/meinehauptmailadresse/              # Wie bisher/unverändert. Die E-Mail wird regulär an den Mailaccount zugestellt
+./users/meinehauptmailadresse/              # Wie bisher und unverändert. Die E-Mail wird regulär an den Mailaccount zugestellt
 |maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
+Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf produktive E-Mail-Adressen bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle einbundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
+
 ## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
-Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durch:
-- Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen
-- Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen, z.B. `.mailfilter_meinehauptmailadresse`
+Sofern man mit dem Testverlauf zufrieden ist, führt man später folgende Schritte durch:
+- Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
+- Eine Mailfilter-Datei für die produktive E-Mail-Adresse erstellen oder, wenn bereits vorhanden, diese entsprechend ergänzen.
 - Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse (z.B. `.qmail-meinehauptmailadresse`) wie folgt ändern
 ```
 #./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
