@@ -101,7 +101,7 @@ Installiert werden: [CRM114](http://crm114.sourceforge.net) und [TRE](https://la
 
 **Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
-Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern euer SSH-Client das unterstützt.
+Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern dein SSH-Client das unterstützt (putty kann das).
 
 ```Shell
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114'
@@ -223,7 +223,7 @@ Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen
 Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf produktive E-Mail-Adressen bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle einbundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
 
 ## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
-Sofern man mit dem Testverlauf zufrieden ist, führt man später folgende Schritte durch:
+Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte durchführen, um CRM114 für deine eigentliche E-Mail-Adresse zu aktivieren:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
 - Eine eigene Mailfilter-Datei für die produktive E-Mail-Adresse erstellen und anpassen oder, wenn bereits vorhanden, die vorhandene Mailfilter-Datei entsprechend anpassen.
 - Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse so einstellen, dass Mails nicht mehr direkt in den Mailaccount zugestellt werden, sondern stattdessen über die zugehörige Mailfilter-Datei verarbeitet werden. Das könnte z.B. wie folgt aussehen, für die Datei `.qmail-meinehauptmailadresse`: 
