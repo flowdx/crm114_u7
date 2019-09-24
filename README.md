@@ -135,9 +135,9 @@ cd ~ # Zurück in den $USER-Ordner
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
-CRM114 lernt, indem dem Programm, durch den Benutzer (also dich!), eingegangene E-Mails entweder als Spam (im Ordner "als Spam lernen") oder Ham ("als Ham lernen") präsentiert werden.
+CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" ***verschieben***) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" ***kopieren***) präsentieren.
 
-Das Script 'learn_maildir' prüft alle vorhandenen Mailaccounts auf diese beiden Ordner. Wird ein Ordner gefunden und sind darin Mails vorhanden, dann werden diese durch CRM114 verarbeitet und anschließend gelöscht. Im Cronjob wird eine Zeile eingefügt, die das Script learn_maildir alle 20 Minuten automatisch aufruft.
+Das Script 'learn_maildir' im Ordner ***crm114*** geht bei Aufruf immer alle Mailaccounts dieses U7 durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind die Ordner vorhanden, so prüft das Script, ob Mails in ihnen vorhanden sind und zeigt diese CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deiner Mails zuverlässig einzuordnen. Jede E-Mail in diesen Ordnern wird nach dem anlernen gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
 
 Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
@@ -230,3 +230,4 @@ Sofern man mit dem Test zufrieden ist, führt man später folgende Schritte durc
 #./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
 |maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
 ```
+## 11. CRM114 trainieren, Spam und Ham zu erkennen
