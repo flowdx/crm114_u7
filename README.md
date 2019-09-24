@@ -25,23 +25,23 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 
 ## 4. nano zum Standardeditor machen
 
-Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben. Wenn gewünscht, kann dieser Schritt nach diesem Tutorial wieder rückgängig gemacht werden.
+Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben. Wenn gewünscht, kann dieser Schritt nach Beenden dieses Tutorials wieder rückgängig gemacht werden.
 
-Dazu folgende Befehle in der Shell ausführen:
+Um nano zum Standardeditor zu machen, bitte folgende Befehle in der Shell ausführen:
 ```Shell
 cd
 nano .bash_profile
 ```
-Durch den nano-Befehl öffnet sich die Datei .bash_profile.
+Durch den nano-Befehl öffnet sich die Datei .bash_profile
 
-Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
+Dort drin eine weitere Zeile mit folgendem Text unten anfügen, sofern diese Zeile noch nicht existiert.
 ```
 export VISUAL='nano'
 ```
 Nun speichern und schließen.
 Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-**Jetzt, ganz wichtig: SSH-Verbindung beenden**, und anschließend neu verbinden.\
+**Jetzt, ganz wichtig: SSH-Verbindung trennen und anschließend neu verbinden!**\
 Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
 
 ## 5. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
@@ -49,7 +49,7 @@ Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**Hier der wichtige Verweis Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
+**Hier ein weiteres mal der Verweis auf ** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"*** **.**\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
 ### 5.1 Neuen Mailaccount anlegen
