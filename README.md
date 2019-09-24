@@ -235,3 +235,9 @@ Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte d
 ```
 ## 11. CRM114 trainieren, Spam und Ham zu erkennen
 CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
+
+ -- To be continued
+
+## Credits
+
+ -- To be continued
