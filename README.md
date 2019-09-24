@@ -1,5 +1,8 @@
 # Lernenden Spamfilter auf Uberspace7 selbst betreiben 
 Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blogtext und seinen Config-Dateien. Er gab mir die Erlaubnis, sie als Grundlage zu verwenden.
+
+# DIESES TUTORIAL BEFINDET SICH GERADE NOCH IM AUFBAU
+
 ## 1. Hintergrund
 Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Es ist möglich, via qmail und mailfilter, auch bei niedrigeren Rspamd-Scores eigene Verarbeitungsschritte einzubauen. Wer aber Spam effektiv ausfiltern möchte, der benötigt einen trainierbaren Spamfilter, der in viele Mailclients fest integriert ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift, wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
 
@@ -53,8 +56,7 @@ Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen a
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
 ### 5.1 Neuen Mailaccount anlegen
-Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen.\
-(siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
+Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen. (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
 ### 5.2 Benötigte Ordnerstruktur
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
@@ -69,7 +71,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
       |
       |___ als Spam lernen
 ```
-Weitere individuelle Ordner in der INBOX sind natürlich problemlos möglich. Die 0 zu Beginn des Ordners Spamfilter sorgt dafür, dass der Ordner in den Ordnelisten oben steht.
+Weitere individuelle Ordner in der INBOX sind natürlich problemlos möglich. Die 0 zu Beginn des Ordners Spamfilter sorgt dafür, dass der Ordner in den Ordnerlisten oben steht.
 
 ### 5.3 Diese geforderte Ordnerstruktur einrichten
                  
