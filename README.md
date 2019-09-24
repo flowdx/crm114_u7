@@ -23,15 +23,17 @@ und der Ausrufezeichen!
 **Beispiel**:\
 Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingabe muss dann lauten: `uberspace mail user add nureintestbenutzer`
 
-## 4. Voraussetzung #1: nano als Standard-Editor
+## 4. nano zum Standardeditor machen
 
-Folgende Befehle ausführen
+Sofern nicht eh schon geschehen, bitte jetzt nano als Standard-Editor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben.
+
+Dazu folgende Befehle ausführen:
 ```Shell
 cd
 nano .bash_profile
 ```
 
-Nun öffnet sich die Datei .bash_profile. Dort drin eine weitere Zeile mit folgendem Text unten anfügen:
+Nun öffnet sich die Datei .bash_profile. Dort drin eine weitere Zeile mit folgendem Text unten anfügen (sofern diese Zeile noch nicht existiert):
 ```
 export VISUAL='nano'
 ```
@@ -40,7 +42,7 @@ Nun Speichern und Schließen. Mit nano geht das immer so: Tastenkombination Strg
 **Jetzt, ganz wichtig: SSH-Verbindung beenden**, und anschließend neu verbinden.\
 Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
 
-## 5. Voraussetzung #2: Ein Mailaccount mit korrekter Ordnerstruktur
+## 5. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
