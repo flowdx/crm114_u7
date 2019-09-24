@@ -49,7 +49,7 @@ Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
 
-**Hier ein weiteres mal der Verweis auf ** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"*** **.**\
+**Hier ein weiteres mal der Verweis auf** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"*** **.**\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
 ### 5.1 Neuen Mailaccount anlegen
