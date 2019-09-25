@@ -241,4 +241,5 @@ CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende M
 ## Credits
 
 Externe Quellen, die für dieses Tutorial bzw. seine Durchführung herangezogen werden:
-- TRE (The free and portable approximate regex matching library) unter BSD-Lizenz von Ville Laurikari, https://laurikari.net/tre/ & https://github.com/laurikari/tre/]
+- TRE (The free and portable approximate regex matching library) unter BSD-Lizenz von Ville Laurikari\ https://laurikari.net/tre/ & https://github.com/laurikari/tre/
+- ....Test
