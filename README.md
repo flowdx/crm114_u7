@@ -28,7 +28,13 @@ und der Ausrufezeichen!
 **Beispiel**:\
 Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingabe muss dann lauten: `uberspace mail user add nureintestbenutzer`
 
-## 4. nano zum Standardeditor machen
+## 4. Einschränkungen
+
+- Es können nur E-Mails bis zu einer Gesamtgröße von ca. 3,9MB angelernt werden. Größere E-Mails werden ohne Anlernen verworfen.
+Grund: CRM114 bricht den Anlernvorgang mit einem Fehler ab, sobald es eine E-Mail mit zu großer Gesamtgröße in einem der Anlernordner findet. Die E-Mail verbleibt dann in dem Ordner und blockiert weiteres Anlernen. Es handelt sich dabei um ein cachbezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. Aus diesem Grund der Workaround, Mails mit mehr als 3,9MB zu löschen, ohne sie CRM114 zu präsentieren. 
+
+- Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
+## 5. nano zum Standardeditor machen
 
 Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben. Wenn gewünscht, kann dieser Schritt nach Beenden dieses Tutorials wieder rückgängig gemacht werden.
 
@@ -49,7 +55,7 @@ Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eint
 **Jetzt, ganz wichtig: SSH-Verbindung trennen und anschließend neu verbinden!**\
 Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
 
-## 5. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
+## 6. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die
 Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen auf dem selben U7 auszuweiten.
@@ -57,10 +63,10 @@ Spamfilterung bei Gefallen auch auf alle weiteren gewünschten E-Mail-Adressen a
 **Hier ein weiteres mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
 
-### 5.1 Neuen Mailaccount anlegen
+### 6.1 Neuen Mailaccount anlegen
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen. (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-### 5.2 Benötigte Ordnerstruktur
+### 6.2 Benötigte Ordnerstruktur
 In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
   INBOX
@@ -75,7 +81,7 @@ In diesem Mailaccount muss folgende Ordnerstruktur vorhanden sein:
 ```
 Weitere individuelle Ordner in der INBOX sind natürlich problemlos möglich. Die 0 zu Beginn des Ordners Spamfilter sorgt dafür, dass der Ordner in den Ordnerlisten oben steht.
 
-### 5.3 Diese geforderte Ordnerstruktur einrichten
+### 6.3 Diese geforderte Ordnerstruktur einrichten
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
@@ -96,7 +102,7 @@ Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
 Sollte dies nicht der Fall sein, ist es nötig, die neu angelegten Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonnieren, damit sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
-## 6. Installation & Einrichtung CRM114
+## 7. Installation & Einrichtung CRM114
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
 Installiert werden: [CRM114](http://crm114.sourceforge.net) und [TRE](https://laurikari.net/tre/) ('The free and portable approximate regex matching library' von Laurikari) sowie Konfigurationsdateien und Scripte hier aus diesem Repository.
@@ -137,7 +143,7 @@ cd ~ # Zurück in den $USER-Ordner
 
 ```
 
-## 7. Anlernen und Aufräumen via Cronjob automatisieren
+## 8. Anlernen und Aufräumen via Cronjob automatisieren
 
 Das Script 'learn_maildir' geht bei Aufruf immer alle Mailaccounts des Uberspace durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern Mails vorhanden sind und zeigt diese CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deine Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
 
@@ -154,11 +160,11 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 8. Spamerkennung für einen Mailaccount einrichten
+## 9. Spamerkennung für einen Mailaccount einrichten
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
-### 8.1 .mailfilter-Datei erstellen
+### 9.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 ```Shell
 cd ~
@@ -191,7 +197,7 @@ to "$MAILDIR"
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-### 8.2 .qmail-Datei erstellen 
+### 9.2 .qmail-Datei erstellen 
 
 Folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 
@@ -210,7 +216,7 @@ Den folgenden Text in den nun offenen nano-Editor eingeben:\
 ```
 Speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 9. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
+## 10. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
 
 Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden ohne in Abläufe der produktiven E-Mail-Adresse einzugreifen.
 
@@ -224,7 +230,7 @@ Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen
 
 Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf produktive E-Mail-Adressen bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle einbundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
 
-## 10. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
+## 11. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte durchführen, um CRM114 für deine eigentliche E-Mail-Adresse zu aktivieren:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
 - Eine eigene Mailfilter-Datei für die produktive E-Mail-Adresse erstellen und anpassen oder, wenn bereits vorhanden, die vorhandene Mailfilter-Datei entsprechend anpassen.
@@ -233,12 +239,12 @@ Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte d
 #./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
 |maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
 ```
-## 11. CRM114 trainieren, Spam und Ham zu erkennen
+## 12. CRM114 trainieren, Spam und Ham zu erkennen
 CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
 
  -- To be continued
 
-## Credits
+## 13. Credits
 
 Externe Quellen, die für dieses Tutorial bzw. seine Durchführung herangezogen werden:
 - CRM114 unter GPLv2-Lizenz
