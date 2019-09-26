@@ -30,8 +30,7 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 
 ## 4. Einschränkungen
 
-- Es können nur E-Mails bis zu einer Gesamtgröße von ca. 3,9MB angelernt werden. Größere E-Mails werden ohne Anlernen verworfen.
-Grund: CRM114 bricht den Anlernvorgang mit einem Fehler ab, sobald es eine E-Mail mit zu großer Gesamtgröße in einem der Anlernordner findet. Die E-Mail verbleibt dann in dem Ordner und blockiert weiteres Anlernen. Es handelt sich dabei um ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. Aus diesem Grund der Workaround, E-Mails mit mehr als 3,9MB beim Anlernvorgang aus den Anlernordnern zu löschen, ohne sie CRM114 zu präsentieren. Auf eigene Verantwortung kann dieses Limit in der Datei 'learn_maildir' angepasst werden. 
+- E-Mails, die in die Anlernordner gelegt werden und die größer als 3,9MB sind, werden aus den Anlernordnern gelöscht, ohne sie CRM114 zum Anlernen zu übergeben. Grund: CRM114 bricht den Anlernvorgang mit einem Fehler ab, sobald es eine E-Mail mit einer kritischen Gesamtgröße in einem der Anlernordner findet. Die E-Mail verbleibt dann in dem Ordner und blockiert weiteres Anlernen. Es handelt sich dabei um ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. Die kritische Größe liegt bei etwa 3,9MB. Aus diesem Grund der Workaround, E-Mails mit mehr als 3,9MB beim Anlernvorgang aus den Anlernordnern zu löschen, ohne sie CRM114 zu präsentieren. Auf eigene Verantwortung kann dieses Limit in der Datei 'learn_maildir' angepasst werden. 
 
 - Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 ## 5. nano zum Standardeditor machen
