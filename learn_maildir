@@ -106,7 +106,7 @@ do
                 if [ "${DRYRUN}" == "0" ];
                 then
                     thismailsizekb=$(( $(wc -c <"${spammail}") / 1024 )) 
-                    if [ thismailsizekb -le $MAILSIZELIMITkb ];
+                    if [ $thismailsizekb -le $MAILSIZELIMITkb ];
                     then
                       ${BE_NICE} ${SPAMFILTER} --spam < "${spammail}" > /dev/null;
                     fi
@@ -129,7 +129,7 @@ do
                 if [ "${DRYRUN}" == "0" ];
                 then
                     thismailsizekb=$(( $(wc -c <"${hammail}") / 1024 )) 
-                    if [ thismailsizekb -le $MAILSIZELIMITkb ];
+                    if [ $thismailsizekb -le $MAILSIZELIMITkb ];
                     then
                         mailfilter=`mktemp -t mailfilter.XXXXXXXX`
                         echo "to \"${DIR}/${TRASHDIR}\"" > "${mailfilter}"
