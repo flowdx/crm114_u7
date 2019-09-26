@@ -5,7 +5,7 @@ set -euo pipefail
 ########################################################################
 # 2015-02-23 Christopher Hirschmann c.hirschmann@jonaspasche.com
 # 2018-04-16 Bernhard Ehlers be@bernhard-ehlers.de
-# 2019-09-22 Florian Eckert
+# 2019-09-26 Florian Eckert
 ########################################################################
 #
 # This program is free software: you can redistribute it and/or modify
@@ -55,6 +55,8 @@ HAMDIR=".0 Spamfilter.als Ham lernen"
 SPAMDIR=".0 Spamfilter.als Spam lernen"
 TRASHDIR=".Trash"
 SPAMFILTER="$HOME/crm114/crm114 -u $HOME/crm114 mailreaver.crm --"
+MAILSIZELIMITkb=3915
+
 
 while getopts ":hvn" Option
 do
@@ -103,7 +105,11 @@ do
                 fi
                 if [ "${DRYRUN}" == "0" ];
                 then
-                    ${BE_NICE} ${SPAMFILTER} --spam < "${spammail}" > /dev/null;
+                    thismailsizekb=$(( $(wc -c <"${spammail}") / 1024 )) 
+                    if [ thismailsizekb -le $MAILSIZELIMITkb ];
+                    then
+                      ${BE_NICE} ${SPAMFILTER} --spam < "${spammail}" > /dev/null;
+                    fi
                     rm -f "${spammail}";
                 fi
             done
@@ -122,10 +128,14 @@ do
                 fi
                 if [ "${DRYRUN}" == "0" ];
                 then
-                    mailfilter=`mktemp -t mailfilter.XXXXXXXX`
-                    echo "to \"${DIR}/${TRASHDIR}\"" > "${mailfilter}"
-                    ${BE_NICE} ${SPAMFILTER} --good < "${hammail}" | maildrop "${mailfilter}";
-                    rm -f "${mailfilter}"
+                    thismailsizekb=$(( $(wc -c <"${hammail}") / 1024 )) 
+                    if [ thismailsizekb -le $MAILSIZELIMITkb ];
+                    then
+                        mailfilter=`mktemp -t mailfilter.XXXXXXXX`
+                        echo "to \"${DIR}/${TRASHDIR}\"" > "${mailfilter}"
+                        ${BE_NICE} ${SPAMFILTER} --good < "${hammail}" | maildrop "${mailfilter}";
+                        rm -f "${mailfilter}"
+                    fi
                     rm -f "${hammail}";
                 fi
             done
