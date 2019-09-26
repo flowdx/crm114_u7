@@ -5,7 +5,7 @@ set -euo pipefail
 ########################################################################
 # 2015-02-23 Christopher Hirschmann c.hirschmann@jonaspasche.com
 # 2018-04-16 Bernhard Ehlers be@bernhard-ehlers.de
-# 2019-09-22 Florian Eckert
+# 2019-09-27 Florian Eckert
 ########################################################################
 #
 # This program is free software: you can redistribute it and/or modify
@@ -56,12 +56,19 @@ SPAMDIR=".0 Spamfilter.als Spam lernen"
 TRASHDIR=".Trash"
 SPAMFILTER="$HOME/crm114/crm114 -u $HOME/crm114 mailreaver.crm --"
 
+MAILSIZELIMITkb=3915;  
+
+CACHEWORKAROUND=1;    # Choose between 1 and 2
+                      # Mails for learning being larger than setted $MAILSIZELIMITkb will be...
+                      #           1: ...deleted without showing them to CRM114
+                      #           2: ...truncated to the $MAILSIZELIMIT and will be shown to CRM114 (not yet confirmed to be 100% working)
+
 while getopts ":hvn" Option
 do
     case $Option in
         h       )       echo -e "Usage:\n-n\tdry run\n-v\tbe verbose\n-h\tthis help message"; exit 0;;
         n       )       DRYRUN=1; ;;
-        v       )       VERBOSE=1; ;;
+        v       )       VERBOSE=1; ;;       
         *       )       echo -e "ERROR: Unimplemented option chosen: -${OPTARG}"; exit 1;;
     esac
 done
@@ -99,12 +106,46 @@ do
                 [ -z "${spammail##*:2,*T*}" ] && continue
                 if [ "${VERBOSE}" == "1" ];
                 then
-                    echo -e "\tEating spam \"${spammail}\". Yuk!";
+                    echo -e "\tEating spam now: \"${spammail}\"";
                 fi
                 if [ "${DRYRUN}" == "0" ];
                 then
-                    ${BE_NICE} ${SPAMFILTER} --spam < "${spammail}" > /dev/null;
+                    thismailsizekb=$(( $(wc -c <"${spammail}") / 1024 )) # size of this mail in kb
+                    if [ "${VERBOSE}" == "1" ]
+                    then
+                        echo -e "\tSize of the mail: ${thismailsizekb}kb";
+                    fi
+                    
+                    if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "2" ];    # if size of mail is greater or equal than maxmailsizelimit
+                    then
+                        echo -e "\tMail is larger than setted limit. Workaround 2 ist active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
+                        truncate -s "${MAILSIZELIMITkb}K" "${spammail}"  # truncate the mail to the mailsizelimit
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tSuccessfully truncated the mail to ${MAILSIZELIMITkb}kb.";
+                        fi
+                    fi
+                    
+                    if [ $thismailsizekb -lt $MAILSIZELIMITkb ] || [ "${CACHEWORKAROUND}" == "2" ];
+                    then
+                        echo -e "\tI will show the mail to CRM114 now...";
+                        ${BE_NICE} ${SPAMFILTER} --spam < "${spammail}" > /dev/null;
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tSuccessfully showed the mail to CRM114 as Spam.";
+                        fi
+                    fi
+                    
+                    if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "1" ] && [ "${VERBOSE}" == "1" ];
+                    then
+                        echo -e "\tMail is larger than setted limit. Workaround 1 is active. Will not show this mail to CRM114.";
+                    fi
+                    
                     rm -f "${spammail}";
+                    if [ "${VERBOSE}" == "1" ];
+                    then
+                        echo -e "\tMail was deleted from spamfolder.";
+                    fi
                 fi
             done
         done
@@ -118,15 +159,51 @@ do
                 [ -z "${hammail##*:2,*T*}" ] && continue
                 if [ "${VERBOSE}" == "1" ];
                 then
-                    echo -e "\tEating ham \"${hammail}\". Yum!";
+                    echo -e "Eating ham now: \"${hammail}\"";
                 fi
                 if [ "${DRYRUN}" == "0" ];
                 then
-                    mailfilter=`mktemp -t mailfilter.XXXXXXXX`
-                    echo "to \"${DIR}/${TRASHDIR}\"" > "${mailfilter}"
-                    ${BE_NICE} ${SPAMFILTER} --good < "${hammail}" | maildrop "${mailfilter}";
-                    rm -f "${mailfilter}"
+                    thismailsizekb=$(( $(wc -c <"${hammail}") / 1024 )) # size of this mail in kb
+                    if [ "${VERBOSE}" == "1" ]
+                    then
+                        echo -e "\tSize of the mail: ${thismailsizekb}kb";
+                    fi
+                    if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "2" ];    # if size of mail is greater or equal than maxmailsizelimit
+                    then
+                        echo -e "\tMail is larger than setted limit. Workaround 2 ist active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
+                        truncate -s "${MAILSIZELIMITkb}K" "${hammail}"  # truncate the mail to the mailsizelimit
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tSuccessfully truncated the mail to ${MAILSIZELIMITkb}kb.";
+                        fi
+                    fi
+                    
+                    if [ $thismailsizekb -lt $MAILSIZELIMITkb ] || [ "${CACHEWORKAROUND}" == "2" ];
+                    then
+                        echo -e "\tI will show the mail to CRM114 now...";
+                        mailfilter=`mktemp -t mailfilter.XXXXXXXX`
+                        ${BE_NICE} ${SPAMFILTER} --good < "${hammail}" | maildrop "${mailfilter}";
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tSuccessfully showed the mail to CRM114 as Ham.";
+                        fi
+                        rm -f "${mailfilter}"
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tRemoved ${mailfilter}";
+                        fi
+                    fi
+                    
+                    if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "1" ] && [ "${VERBOSE}" == "1" ];
+                    then
+                        echo -e "\tMail is larger than setted limit. Workaround 1 is active. Will not show this mail to CRM114.";
+                    fi
+                    
                     rm -f "${hammail}";
+                    if [ "${VERBOSE}" == "1" ];
+                    then
+                        echo -e "\tMail was deleted from hamfolder.";
+                    fi
                 fi
             done
         done
