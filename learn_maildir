@@ -118,7 +118,7 @@ do
                     
                     if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "2" ];    # if size of mail is greater or equal than maxmailsizelimit
                     then
-                        echo -e "\tMail is larger than setted limit. Workaround 2 ist active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
+                        echo -e "\tMail is larger than setted limit. Workaround 2 is active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
                         truncate -s "${MAILSIZELIMITkb}K" "${spammail}"  # truncate the mail to the mailsizelimit
                         if [ "${VERBOSE}" == "1" ];
                         then
@@ -170,7 +170,7 @@ do
                     fi
                     if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "2" ];    # if size of mail is greater or equal than maxmailsizelimit
                     then
-                        echo -e "\tMail is larger than setted limit. Workaround 2 ist active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
+                        echo -e "\tMail is larger than setted limit. Workaround 2 is active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
                         truncate -s "${MAILSIZELIMITkb}K" "${hammail}"  # truncate the mail to the mailsizelimit
                         if [ "${VERBOSE}" == "1" ];
                         then
