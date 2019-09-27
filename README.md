@@ -217,9 +217,9 @@ Den folgenden Text in den nun offenen nano-Editor eingeben:\
 ```
 Speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 11. OPTIONAL: Produktive E-Mail-Adresse in den Test einbeziehen
+## 11. OPTIONAL: Ankommende E-Mails der Haupt-Mailadresse in den Test einbeziehen
 
-Es ist möglich, E-Mails der produktiven E-Mail-Adresse auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden ohne in Abläufe der produktiven E-Mail-Adresse einzugreifen.
+Es ist sinnvoll, ankommende E-Mails deiner bereits vorhandenen, produktiven E-Mail-Adresse wie bisher auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, ohne vorerst in die gewohnten Abläufe der produktiven E-Mail-Adresse einzugreifen.
 
 Um dies zu erreichen die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um die Zustellung an die .mailfilter-Datei **ergänzen**.
 
@@ -229,9 +229,14 @@ Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen
 |maildrop $HOME/.mailfilter_[!USERNAME!]    # Zusätzlich wird die Mail via Mailfilter an den Test-Account zugestellt
 ```
 
-Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf produktive E-Mail-Adressen bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle eingebundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
+Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf weitere E-Mail-Accounts bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle eingebundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
 
-## 12. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
+## 12. CRM114 testen, nutzen und trainieren.
+CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
+
+-> Hier fehlt derzeit noch einiges an Text
+
+## 13. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte durchführen, um CRM114 für deine eigentliche E-Mail-Adresse zu aktivieren:
 - Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
 - Eine eigene Mailfilter-Datei für die produktive E-Mail-Adresse erstellen und anpassen oder, wenn bereits vorhanden, die vorhandene Mailfilter-Datei entsprechend anpassen.
@@ -240,20 +245,15 @@ Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte d
 #./users/meinehauptmailadresse/                     # Die Zeile auskommentieren, so dass keine E-Mails direkt ohne Spamfilter zugestellt werden
 |maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
 ```
-## 13. CRM114 trainieren, Spam und Ham zu erkennen
-CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
+## 14. Tipps
 
- -- To be continued
+-> noch nicht vorhanden
 
-## 13. Tipps
-
-- noch nicht vorhanden
-
-## 14. Einschränkungen & deren Lösung
+## 15. Einschränkungen & deren Lösung
 
 **Derzeit ist keine Einschränkung bekannt, für die es keine implementierte Lösung gibt.**
 
-### 14.1 CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails (Workaround implementiert)
+### 15.1 CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails (Workaround implementiert)
 **Problembeschreibung:** Eine E-Mail, die zum Anlernen in einem Ordner liegt und die in Summe größer als 3,9Mb ist, bringt CRM114 auf Uberspache (und wohl generell) zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). CRM114 erwartet wohl, dass ihm E-Mails immer frei von Anhängen bzw. gekürzt auf eine passable Größe übergeben werden. Aber auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
 \
 **Implementierter Workaround: Zwei Varianten zur Fehlervermeidung sind implementiert:**\
@@ -270,11 +270,11 @@ In der Datei 'learn_maildir' die Variable CACHEWORKAROUND in Zeile 61 entweder m
 **Ändern der Mailgröße, ab der die Varianten greifen sollen (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
 Es ist möglich, das Limit von 3,9Mb abzuändern. Ich rate aber ausdrücklich davon ab, denn dies kann zu den oben benannten Fehlern beim Anlernvorgang führen. Ändern geht wie folgt: In der Datei 'learn_maildir' die Variable MAILSIZELIMITkb in Zeile 59 mit der gewünschten Kilobytemenge befüllen. Standard ist: 3915
 
-### 14.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
+### 15.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
 Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 
 
-## 15. Credits
+## 16. Credits
 
 Externe Quellen, die für dieses Tutorial bzw. seine Durchführung herangezogen werden:
 - CRM114 unter GPLv2-Lizenz
