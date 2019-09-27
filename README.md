@@ -127,7 +127,7 @@ Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` erset
 
 Also bitte einen neuen Mailaccount auf dem U7 anlegen, dafür den Befehl `uberspace mail user add [!USERNAME!]` nutzen. (siehe [U7-Manual > 'Mailboxes' > 'Main mailbox'](https://manual.uberspace.de/mail-mailboxes.html))
 
-### 9. Notwendige Ordnerstruktur im Mailaccount erstellen
+## 9. Notwendige Ordnerstruktur im Mailaccount erstellen
 In jedem Mailaccount, der Spamschutz von CRM114 erhalten soll, muss folgende Ordnerstruktur vorhanden sein:
 ```
   INBOX
