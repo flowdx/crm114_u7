@@ -96,7 +96,7 @@ cd ~ # Zurück in den $USER-Ordner
 Ob die Installation erfolgreich war und CRM114 funktioniert, lässt sich in der Shell mit folgendem Befehl testen:
 
 ```Shell
-~/crm114/learn_maildir - v
+~/crm114/learn_maildir -v
 ```
 
 Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und zwar mit der -v Option (v steht hier für "verbose", also "geschwätzig"). Dieses Script prüft auf neue Ham- und Spammails, die ihm zum Anlernen übergeben werden. Zu diesem Zeitpunkt sollte es aber nur die vorhandenen Mailaccounts deines Uberspace auflisten und keine Spammails oder Hammails zum Anlernen finden. Diesen Shell-Befehl kannst du später immer wieder ausführen, wenn du sehen möchtest, was learn_maildir bei Ausführung tut.
