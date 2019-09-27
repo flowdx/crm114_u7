@@ -69,8 +69,11 @@ export VISUAL='nano'
 Nun speichern und schließen.
 Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-**Jetzt, ganz wichtig: SSH-Verbindung trennen und anschließend neu verbinden!**\
-Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 6.
+Mit folgendem Shell-Befehl die Änderung schon für die aktuelle Session übernehmen:
+```
+source ~/.bashrc
+```
+Nano ist ab jetzt bei jedem SSH-Verbindungsaufbau der Standardeditor. 
 
 ## 6. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
@@ -263,7 +266,7 @@ CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende M
 
 ## 13. Tipps
 
-Zu Beginn kann es gewünscht sein, das Script 'learn_maildir' auch mal manuell in der Shell aufzurufen. Sofern kein Fehler auftritt erzeugt das Script allerdings keinerlei Ausgabe. Dies lässt sich ändern, indem man den Operator -v ergänzt (Verbosemode, also "geschwätzig"). Der manuelle Aufruf ```crm114/learn_maildir``` bzw. ```crm114/learn_maildir -v``` funktioniert übrigens nur aus dem Home-Ordner heraus, den man im Zweifelsfall immer erreicht, indem man vorweg ein simples ```cd``` ausführt.
+Zu Beginn kann es gewünscht sein, das Script 'learn_maildir' auch mal manuell in der Shell aufzurufen. Sofern kein Fehler auftritt erzeugt das Script allerdings keinerlei Ausgabe. Dies lässt sich ändern, indem man den Operator -v ergänzt (Verbosemode, also "geschwätzig"): ```cd ~/crm114 && ./learn_maildir - v```
 
 ## 14. Credits
 
