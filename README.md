@@ -25,8 +25,8 @@ Alle Befehle hier werden via SSH-Zugriff in der Shell eingegeben. Darüber hinau
 In der folgenden Anleitung wird an mehreren Stellen die Platzhalter-Variable [!USERNAME!] verwendet. Diese ist **IMMER** durch einen selbstgewählten Benutzernamen zu ersetzen, und zwar unter Wegfall der eckigen Klammern
 und der Ausrufezeichen!
 
-**Beispiel**:\
-Du entscheidest dich für den Mailbenutzer `spamfiltertest`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingabe muss dann lauten: `uberspace mail user add spamfiltertest`
+>**Beispiel**:\
+>Du entscheidest dich für den Mailbenutzer `spamfiltertest`. In der Anleitung steht: Bitte `uberspace mail user add [!USERNAME!]` eingeben. Die Eingabe muss dann lauten: `uberspace mail user add spamfiltertest`
 
 ## 4. nano zum Standardeditor machen
 
@@ -51,7 +51,7 @@ source ~/.bash_profile
 ```
 Nano ist ab jetzt und bei jedem neuen SSH-Verbindungsaufbau der Standardeditor. 
 
-## 5. CRM114 Installation
+## 5. CRM114 installieren
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
 Installiert werden: [CRM114](http://crm114.sourceforge.net) und [TRE](https://laurikari.net/tre/) ('The free and portable approximate regex matching library' von Laurikari) sowie Konfigurationsdateien und Scripte hier aus diesem Repository.
