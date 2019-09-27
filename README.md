@@ -49,7 +49,7 @@ In der Datei 'learn_maildir' die Variable CACHEWORKAROUND in Zeile 61 entweder m
 **Ändern der Mailgröße, ab der die Varianten greifen sollen (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
 Es ist möglich, das Limit von 3,9Mb abzuändern. Ich rate aber ausdrücklich davon ab, denn dies kann zu den oben benannten Fehlern beim Anlernvorgang führen. Ändern geht wie folgt: In der Datei 'learn_maildir' die Variable MAILSIZELIMITkb in Zeile 59 mit der gewünschten Kilobytemenge befüllen. Standard ist: 3915
 
-## 4.2 Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben.
+### 4.2 Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben.
 Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 ## 5. nano zum Standardeditor machen
 
