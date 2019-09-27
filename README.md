@@ -256,7 +256,7 @@ Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte d
 ### 15.1 CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails (Workaround implementiert)
 **Problembeschreibung:** Eine E-Mail, die zum Anlernen in einem Ordner liegt und die in Summe größer als 3,9Mb ist, bringt CRM114 auf Uberspache (und wohl generell) zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). CRM114 erwartet wohl, dass ihm E-Mails immer frei von Anhängen bzw. gekürzt auf eine passable Größe übergeben werden. Aber auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
 \
-**Implementierter Workaround: Zwei Varianten zur Fehlervermeidung sind implementiert:**\
+**Implementierte Lösung: Zwei Varianten zur Fehlervermeidung sind implementiert:**\
 Genutzt wird immer **entweder** Variante 1 **oder** Variante 2. Ein Wechsel zwischen beiden Varianten ist jederzeit möglich, auch im laufenden Betrieb.
 
 - **Variante 1** (Als **Standard aktiv** und sehr sicher funktionstüchtig, aber mit Einschränkungen verbunden)\
@@ -271,7 +271,7 @@ In der Datei 'learn_maildir' die Variable CACHEWORKAROUND in Zeile 61 entweder m
 Es ist möglich, das Limit von 3,9Mb abzuändern. Ich rate aber ausdrücklich davon ab, denn dies kann zu den oben benannten Fehlern beim Anlernvorgang führen. Ändern geht wie folgt: In der Datei 'learn_maildir' die Variable MAILSIZELIMITkb in Zeile 59 mit der gewünschten Kilobytemenge befüllen. Standard ist: 3915
 
 ### 15.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
-Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
+**Implementierte Lösung:** Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 
 
 ## 16. Credits
