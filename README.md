@@ -238,7 +238,7 @@ CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende M
 
 ## 13. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte durchführen, um CRM114 für deine eigentliche E-Mail-Adresse zu aktivieren:
-- Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen.
+- Die geforderte Ordnerstruktur in der produktiven E-Mail-Adresse erstellen (siehe 9.1).
 - Eine eigene Mailfilter-Datei für die produktive E-Mail-Adresse erstellen und anpassen oder, wenn bereits vorhanden, die vorhandene Mailfilter-Datei entsprechend anpassen.
 - Die vorhandene .qmail-Datei der produktiven E-Mail-Adresse so einstellen, dass Mails nicht mehr direkt in den Mailaccount zugestellt werden, sondern stattdessen über die zugehörige Mailfilter-Datei verarbeitet werden. Das könnte z.B. wie folgt aussehen, für die Datei `.qmail-meinehauptmailadresse`: 
 ```
