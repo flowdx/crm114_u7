@@ -57,8 +57,7 @@ Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. 
 
 Um nano zum Standardeditor zu machen, bitte folgende Befehle in der Shell ausführen:
 ```Shell
-cd
-nano .bash_profile
+nano ~/.bash_profile
 ```
 Durch den nano-Befehl öffnet sich die Datei .bash_profile
 
@@ -187,10 +186,9 @@ Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 ### 9.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 ```Shell
-cd ~
-touch .mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-chmod 600 .mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
-nano .mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
+touch ~/.mailfilter_[!USERNAME!]        # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 600 ~/.mailfilter_[!USERNAME!]    # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano ~/.mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
@@ -222,10 +220,9 @@ Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 Folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
 
 ```Shell
-cd ~
-touch .qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
-chmod 644 .qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
-nano .qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
+touch ~/.qmail-[!USERNAME!]       # Erstellt die Datei, aber nur, sofern sie noch nicht existiert
+chmod 644 ~/.qmail-[!USERNAME!]   # Ändert auf die von U7 benötigte Rechte-Einstellung
+nano ~/.qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 ```
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
