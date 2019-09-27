@@ -30,21 +30,27 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 
 ## 4. Einschränkungen & deren Lösung
 
-**Für folgende Einschränkung von CRM114 ist eine vollständige Lösung implementiert:**
-- CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails, insbesondere mit großen Dateianhängen. Auf Uberspace7 (oder generell?) führt eine E-Mail, die zum Anlernen in einem Ordner liegt und die größer als 3,9Mb ist, zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). Auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
+**Derzeit ist keine Einschränkung bekannt, für die es keine implementierte Lösung gibt**
+
+### 4.1 Workaround implementiert: CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails
+Auf Uberspace7 (oder generell?) führt eine E-Mail, die zum Anlernen in einem Ordner liegt und die in Summe größer als 3,9Mb ist, zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). Auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
 \
 Die gute Nachricht: **Zwei Varianten zur Fehlervermeidung sind implementiert:**\
-Genutzt wird immer entweder Variante 1 **oder** Variante 2. Ein Wechsel zwischen beiden Varianten ist jederzeit möglich, auch im laufenden Betrieb.
-    - **Variante 1** (Als **Standard aktiv** und sehr sicher funktionstüchtig, aber mit Einschränkungen verbunden)\
+Genutzt wird immer **entweder** Variante 1 **oder** Variante 2. Ein Wechsel zwischen beiden Varianten ist jederzeit möglich, auch im laufenden Betrieb.
+
+- **Variante 1** (Als **Standard aktiv** und sehr sicher funktionstüchtig, aber mit Einschränkungen verbunden)\
 Dies ist die radikale Variante, die aber garantiert immer funktioniert: E-Mails in Anlernordnern, die größer als 3,9Mb sind, werden vor dem Anlernen gelöscht und somit beim Anlernen nicht berücksichtigt. Nachteil: E-Mails, die größer als 3,9Mb sind, lassen sich nicht nutzen, um den Filter zu trainieren. Da man dies nicht mitbekommt verhält sich diese Variante also im Fall großer E-Mails nicht so, wie man den Anlernvorgang eigentlich erwartet.
-    - **Variante 2** (experimentell, muss manuell aktiviert werden)\
+- **Variante 2** (experimentell, muss manuell aktiviert werden)\
 Die elegante Variante, von der aber nicht ganz klar ist, ob sich diese immer problemlos verhält: E-Mails in Anlernordnern, die größer als 3,9Mb sind, werden vor dem Anlernen auf 3,9Mb "gekürzt" (genutzt wird truncate) und werden dann regulär von CRM114 angelernt. In den ersten 3,9Mb einer E-Mail sollten in der Regel alle Informationen vorhanden sein, die CRM114 benötigt, um die E-Mail anzulernen. Inhalte von Dateianhängen sind für eine Spamerkennung eher irrelevant.
-    - **Umschalten der genutzten Variante (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
+
+**Umschalten der genutzten Variante (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
 In der Datei 'learn_maildir' die Variable CACHEWORKAROUND in Zeile 61 entweder mit 1 oder 2 füllen und die Datei anschließend speichern. Die Variable ist vorbelegt mit einer 1, Standard ist also die Nutzung der Variante 1. Ein Wechsel zwischen beiden Varianten ist jederzeit möglich.
-    - **Ändern der Mailgröße, ab der die Varianten greifen sollen (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
+
+**Ändern der Mailgröße, ab der die Varianten greifen sollen (ACHTUNG, DIES GESCHIEHT AUF EIGENE VERANTWORTUNG!)**\
 Es ist möglich, das Limit von 3,9Mb abzuändern. Ich rate aber ausdrücklich davon ab, denn dies kann zu den oben benannten Fehlern beim Anlernvorgang führen. Ändern geht wie folgt: In der Datei 'learn_maildir' die Variable MAILSIZELIMITkb in Zeile 59 mit der gewünschten Kilobytemenge befüllen. Standard ist: 3915
 
-- Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
+## 4.2 Eingehende E-Mails, die größer als 2MB sind, werden nicht an CRM114 zur Spamrüfung übergeben.
+Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 ## 5. nano zum Standardeditor machen
 
 Sofern nicht eh schon geschehen, bitte jetzt nano als Standardeditor festlegen. So kann der Rest der Anleitung so durchgegangen werden, wie beschrieben. Wenn gewünscht, kann dieser Schritt nach Beenden dieses Tutorials wieder rückgängig gemacht werden.
