@@ -31,13 +31,13 @@ Du entscheidest dich für den Mailbenutzer `nureintestbenutzer`. In der Anleitun
 ## 4. Einschränkungen & deren Workarounds
 
 **Für folgende Einschränkung von CRM114 ist eine vollständige Lösung implementiert:**
-- CRM114 hat beim Anlernen Probleme mit "großen" E-Mails. Auf Uberspace7 (oder generell? führt eine E-Mail, die zum Anlernen in einen Ordner liegt und die größer als 3,9Mb ist, zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Auch wenn Spammer selten Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch Mails zum Anlernen vorzulegen, die große Dateianhänge haben. 
+- CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails, insbesondere mit großen Dateianhängen. Auf Uberspace7 (oder generell?) führt eine E-Mail, die zum Anlernen in einen Ordner liegt und die größer als 3,9Mb ist, zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Auch wenn Spammer selten Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch Mails zum Anlernen vorzulegen, die große Dateianhänge haben. 
 **Zwei Lösungsmöglichkeiten sind implementiert:**
 Genutzt wird immer entweder Lösung 1 oder Lösung 2. Ein Wechsel zwischen beiden Lösungen ist jederzeit möglich.
-    - **Lösung 1 (Standard und funktionstüchtig, aber mit Einschränkungen verbunden)**
-    Hier kommt ein netter Text hin.
+    - **Lösung 1** (Standard und funktionstüchtig, aber mit Einschränkungen verbunden)
+Hier kommt ein netter Text hin.
     - **Lösung 2 (experimentell(er), muss manuell aktiviert werden)**
-    Hier kommt ein netter Text hin.
+Hier kommt ein netter Text hin.
 
 E-Mails, die in die Anlernordner gelegt werden und die größer als 3,9MB sind, werden aus den Anlernordnern gelöscht, ohne sie CRM114 zum Anlernen zu übergeben. Grund: CRM114 bricht den Anlernvorgang mit einem Fehler ab, sobald es eine E-Mail mit einer kritischen Gesamtgröße in einem der Anlernordner findet. Die E-Mail verbleibt dann in dem Ordner und blockiert weiteres Anlernen. Es handelt sich dabei um ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. Die kritische Größe liegt bei etwa 3,9MB. Aus diesem Grund der Workaround, E-Mails mit mehr als 3,9MB beim Anlernvorgang aus den Anlernordnern zu löschen, ohne sie CRM114 zu präsentieren. Auf eigene Verantwortung kann dieses Limit in der Datei 'learn_maildir' angepasst werden. 
 
