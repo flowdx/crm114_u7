@@ -120,7 +120,7 @@ Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
 ## 8. Einen neuen Mailaccount zum Testen erstellen
 
-Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse **nicht anzutasten**. Stattdessen bitte zuerst nur eine Test-E-Mail-Adresse einrichten und für den Test von CRM114 nutzen. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
+Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse ** vorerst nicht anzutasten**. Stattdessen bitte zuerst nur eine Test-E-Mail-Adresse einrichten und für den Test von CRM114 nutzen. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
 
 **Hier ein weiteres mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
