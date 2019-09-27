@@ -91,15 +91,15 @@ sh db_init # Die Einrichtung der Datenbank durchführen
 cd ~ # Zurück in den $USER-Ordner
 
 ```
-## 6. CRM114 testen
+## 6. CRM114 auf Funktionsfähigkeit testen
 
-Ob die Installation erfolgreich war, lässt sich in der Shell mit folgendem Befehl testen:
+Ob die Installation erfolgreich war und CRM114 funktioniert, lässt sich in der Shell mit folgendem Befehl testen:
 
 ```Shell
 ~/crm114/learn_maildir - v
 ```
 
-Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und zwar mit der -v Option (v steht hier für "verbose", also "geschwätzig"). Zu diesem Zeitpunkt sollte es nur die vorhandenen Mailaccounts deines Uberspace auflisten und keine Spammails oder Hammails zum Anlernen finden. Diesen Shell-Befehl kannst du später immer wieder ausführen, wenn du sehen möchtest, was learn_maildir bei Ausführung tut.
+Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und zwar mit der -v Option (v steht hier für "verbose", also "geschwätzig"). Dieses Script prüft auf neue Ham- und Spammails, die ihm zum Anlernen übergeben werden. Zu diesem Zeitpunkt sollte es aber nur die vorhandenen Mailaccounts deines Uberspace auflisten und keine Spammails oder Hammails zum Anlernen finden. Diesen Shell-Befehl kannst du später immer wieder ausführen, wenn du sehen möchtest, was learn_maildir bei Ausführung tut.
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
@@ -118,9 +118,9 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 8. Einen neuen Mailaccount zum Testen erstellen erstellen
+## 8. Einen neuen Mailaccount zum Testen erstellen
 
-Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse nicht anzutasten. Stattdessen erstmal eine Test-E-Mail-Adresse einrichten. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
+Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse **nicht anzutasten**. Stattdessen bitte zuerst nur eine Test-E-Mail-Adresse einrichten und für den Test von CRM114 nutzen. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
 
 **Hier ein weiteres mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
