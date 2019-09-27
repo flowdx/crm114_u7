@@ -70,7 +70,7 @@ Nun speichern und schließen.
 Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
 **Jetzt, ganz wichtig: SSH-Verbindung trennen und anschließend neu verbinden!**\
-Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 5.
+Nur so wird die Umstellung des Standardeditors auf nano aktiv. Danach weiter mit Punkt 6.
 
 ## 6. Voraussetzung: Ein Mailaccount mit korrekter Ordnerstruktur
 
