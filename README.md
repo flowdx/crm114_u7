@@ -255,7 +255,11 @@ CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende M
 
  -- To be continued
 
-## 13. Credits
+## 13. Tipps
+
+Zu Beginn kann es gewünscht sein, das Script 'learn_maildir' auch mal manuell in der Shell aufzurufen. Sofern kein Fehler auftritt erzeugt das Script allerdings keinerlei Ausgabe. Dies lässt sich ändern, indem man den Operator -v ergänzt (Verbosemode, also "geschwätzig"). Der manuelle Aufruf ```crm114/learn_maildir``` bzw. ```crm114/learn_maildir -v``` funktioniert übrigens nur aus dem Home-Ordner heraus, den man im Zweifelsfall immer erreicht, indem man vorweg ein simples ```cd``` ausführt.
+
+## 14. Credits
 
 Externe Quellen, die für dieses Tutorial bzw. seine Durchführung herangezogen werden:
 - CRM114 unter GPLv2-Lizenz
