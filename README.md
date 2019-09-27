@@ -69,9 +69,9 @@ export VISUAL='nano'
 Nun speichern und schließen.
 Mit nano geht das immer so: Tastenkombination Strg+X drücken, dann ein `y` eintippen und mit Enter bestätigen.
 
-Mit folgendem Shell-Befehl die Änderung schon für die aktuelle Session übernehmen:
-```
-source ~/.bashrc
+Mit folgendem Shell-Befehl die Änderung schon für die aktuelle Session aktivieren:
+```Shell
+source ~/.bash_profile
 ```
 Nano ist ab jetzt bei jedem SSH-Verbindungsaufbau der Standardeditor. 
 
