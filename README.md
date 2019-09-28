@@ -58,12 +58,16 @@ Installiert werden: [CRM114](http://crm114.sourceforge.net) und [TRE](https://la
 
 **Achtung**: Sofern der Ordner ~/crm114 bereits existiert wird er durch folgende Befehle ohne Rückfrage überschrieben.
 
-**Automatische Installation**, indem folgende Zeile in der Shell ausgeführt wird:
+### 5.1 Automatische Installation
+
+Nur folgende Zeile in der Shell ausführen:
 ```Shell
 curl -sSL https://raw.githubusercontent.com/flowdx/crm114_u7/master/install_crm114_u7.sh -o ~/install_crm114_u7.sh && chmod +x ~/install_crm114_u7.sh && ~/install_crm114_u7.sh && rm ~/install_crm114_u7.sh
 ```
 
-**ODER** die Befehle aus der install.crm114_u7.sh wie folgt manuell eingeben:
+### 5.2 ODER: Manuelle Installation
+
+Die folgenden Zeilen in der Shell ausführen (entsprechen den Schritten in der install_crm114_u7.sh) aus 5.1:
 
 Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern dein SSH-Client das unterstützt (putty kann das).
 
