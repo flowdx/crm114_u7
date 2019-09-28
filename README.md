@@ -67,7 +67,7 @@ curl -sSL https://raw.githubusercontent.com/flowdx/crm114_u7/master/install_crm1
 
 ### 5.2 ODER: Manuelle Installation
 
-Die folgenden Zeilen in der Shell ausführen (entsprechen den Schritten in der install_crm114_u7.sh) aus 5.1:
+Die folgenden Zeilen in der Shell ausführen, diese entsprechen den Schritten in der install_crm114_u7.sh aus der Automatischen Installation:
 
 Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern dein SSH-Client das unterstützt (putty kann das).
 
