@@ -1,3 +1,4 @@
+#!/bin/bash
 mkdir -p ~/crm114       # Erzeuge Ordner 'crm114'
 cd ~/crm114             # Wechsle in den Ordner 'crm114'
 curl -sSL http://crm114.sourceforge.net/tarballs/crm114-20100106-BlameMichelson.src.tar.gz | tar xz # Kopiere und entpacke $ CRM114
