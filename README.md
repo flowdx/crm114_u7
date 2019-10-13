@@ -61,7 +61,9 @@ Mit folgendem Shell-Befehl die Änderung schon für die aktuelle Session aktivie
 source ~/.bash_profile
 ```
 Nano ist ab jetzt und bei jedem neuen SSH-Verbindungsaufbau der Standardeditor. 
+
 #II  - Installation der Spamfilter-Software
+
 ## 5. CRM114 installieren
 
 Die folgenden Befehle installieren und konfigurieren CRM114 in den Ordner *~/crm114*.\
@@ -122,7 +124,9 @@ Ob die Installation erfolgreich war und CRM114 funktioniert, lässt sich in der 
 ```
 
 Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und zwar mit der -v Option (v steht hier für "verbose", also "geschwätzig"). Dieses Script prüft auf neue Ham- und Spammails, die ihm zum Anlernen übergeben werden. Zu diesem Zeitpunkt sollte es aber nur die vorhandenen Mailaccounts deines Uberspace auflisten und keine Spammails oder Hammails zum Anlernen finden. Diesen Shell-Befehl kannst du später immer wieder ausführen, wenn du sehen möchtest, was learn_maildir bei Ausführung tut.
+
 #III - Die Lernfunktionen aktivieren
+
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
 Das Script 'learn_maildir' (hier jetzt nicht mehr im Verbose-mode) geht bei Aufruf immer alle Mailaccounts des Uberspace durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern Mails vorhanden sind und zeigt diese CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deine Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
@@ -184,7 +188,9 @@ test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Spam erkannt" || maildirmak
 Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
 Sollte dies nicht der Fall sein, ist es nötig, die neu angelegten Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonnieren, damit sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
+
 #V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
+
 ## 10. Spamerkennung für einen Mailaccount einrichten
 
 **Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
