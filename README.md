@@ -8,7 +8,7 @@ II  - Installation der Spamfilter-Software\
 III - Die Lernfunktionen aktivieren\
 IV  - Notwendige Ordner im Mailaccount anlegen\
 V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount\
-VI  - Anleitung zur Nutzung und zum Anlernen
+VI  - Anleitung zur Nutzung und zum Anlernen\
 VII - Sonstiges
 
 # I - Grundsätzliches und Vorbereitungen
