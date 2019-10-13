@@ -3,10 +3,18 @@ Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blog
 
 # DIESES TUTORIAL BEFINDET SICH NOCH IM AUFBAU!
 
-## 1. Hintergrund
-Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Es ist möglich, via qmail und mailfilter, auch bei niedrigeren Rspamd-Scores eigene Verarbeitungsschritte einzubauen. Wer aber Spam effektiv ausfiltern möchte, der benötigt einen trainierbaren Spamfilter, der in viele Mailclients fest integriert ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift, wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
+I   - Grundsätzliches und Vorbereitungen
+II  - Installation der Spamfilter-Software
+III - Die Lernfunktionen aktivieren
+IV  - Notwendige Ordner im Mailaccount anlegen
+V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
+VI  - Anleitung zur Nutzung und zum Anlernen
 
-Noch der Hinweis, dass es auf dem Vorgängerprodukt U6 mit SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar) vorinstallierte Spamfilter gibt/gab. Diese funktionieren auf U6 auch nach wie vor, sind aber unmaintained. Deshalb werden sie auf U7 nicht mehr eingesetzt werden. Diese Anleitung imitiert in etwa das Verhalten von DSPAM auf U6, indem es CRM114 auf U7 nutzt. Allen, die das Spamfiltern und Anlernen von U6 kennen, sollten sich hier also schnell zurechtfinden.
+# I - Grundsätzliches und Vorbereitungen
+## 1. Hintergrund
+Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Grundsätzlich wäre es möglich, via qmail und mailfilter, auch für niedrigere Rspamd-Scores eigene Verarbeitungsschritte einzubauen und so die Schwelle für Spam/Ham den eigenen Bedürfnissen nach festzulegen. Um aber Spam wirklich effektiv ausfiltern zu können, benötigt man einen trainierbaren Spamfilter, der in vielen Software-Mailclients wie z.B. Thunderbird häufig fester Bestandteil ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
+
+Noch der Hinweis, dass es auf dem Vorgängerprodukt U6 vorinstallierte Spamfilter-Software gibt (SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar)), die man selbst einrichten muss/kann. Auf U7 werden diese Spamfilter-Programme aber nicht mehr von Vornherein angeboten, da sie unmaintained sind. Diese Anleitung imitiert in etwa das, von U6 gewohnte Verhalten von DSPAM, indem es CRM114 auf U7 nutzt. Allen, die das Spamfiltern und Anlernen von U6 kennen, sollten sich hier also schnell zurechtfinden.
 ## 2. Spamfiltersoftware der Wahl: CRM114
 
 Mit folgendem Zitat von Bernhard ist alles gesagt:
