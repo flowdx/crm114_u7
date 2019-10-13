@@ -143,7 +143,7 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 32 4 * * 0,3 crm114/cache_cleanup
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
-#IV  - Notwendige Ordner im Mailaccount anlegen
+# IV  - Notwendige Ordner im Mailaccount anlegen
 ## 8. Einen neuen Mailaccount zum Testen erstellen
 
 Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse **vorerst nicht anzutasten**. Stattdessen bitte zuerst nur eine Test-E-Mail-Adresse einrichten und für den Test von CRM114 nutzen. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
