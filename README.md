@@ -3,11 +3,11 @@ Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blog
 
 # DIESES TUTORIAL BEFINDET SICH NOCH IM AUFBAU!
 
-I   - Grundsätzliches und Vorbereitungen
-II  - Installation der Spamfilter-Software
-III - Die Lernfunktionen aktivieren
-IV  - Notwendige Ordner im Mailaccount anlegen
-V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
+I   - Grundsätzliches und Vorbereitungen\
+II  - Installation der Spamfilter-Software\
+III - Die Lernfunktionen aktivieren\
+IV  - Notwendige Ordner im Mailaccount anlegen\
+V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount\
 VI  - Anleitung zur Nutzung und zum Anlernen
 
 # I - Grundsätzliches und Vorbereitungen
