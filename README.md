@@ -62,7 +62,7 @@ source ~/.bash_profile
 ```
 Nano ist ab jetzt und bei jedem neuen SSH-Verbindungsaufbau der Standardeditor. 
 
-#II  - Installation der Spamfilter-Software
+# II  - Installation der Spamfilter-Software
 
 ## 5. CRM114 installieren
 
@@ -125,7 +125,7 @@ Ob die Installation erfolgreich war und CRM114 funktioniert, lässt sich in der 
 
 Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und zwar mit der -v Option (v steht hier für "verbose", also "geschwätzig"). Dieses Script prüft auf neue Ham- und Spammails, die ihm zum Anlernen übergeben werden. Zu diesem Zeitpunkt sollte es aber nur die vorhandenen Mailaccounts deines Uberspace auflisten und keine Spammails oder Hammails zum Anlernen finden. Diesen Shell-Befehl kannst du später immer wieder ausführen, wenn du sehen möchtest, was learn_maildir bei Ausführung tut.
 
-#III - Die Lernfunktionen aktivieren
+# III - Die Lernfunktionen aktivieren
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
@@ -189,7 +189,7 @@ Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
 Sollte dies nicht der Fall sein, ist es nötig, die neu angelegten Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonnieren, damit sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
-#V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
+# V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
 
 ## 10. Spamerkennung für einen Mailaccount einrichten
 
@@ -258,7 +258,7 @@ Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen
 ```
 
 Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf weitere E-Mail-Accounts bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle eingebundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
-#VI  - Anleitung zur Nutzung und zum Anlernen
+# VI  - Anleitung zur Nutzung und zum Anlernen
 ## 12. CRM114 testen, nutzen und trainieren.
 CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
 
@@ -274,7 +274,7 @@ Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte d
 |maildrop $HOME/.mailfilter_meinehauptmailadresse   # Die Mail wird an die neue .mailfilter-Datei übergeben
 ```
 
-#VII - Sonstiges
+# VII - Sonstiges
 ## 14. Tipps
 
 -> noch nicht vorhanden
