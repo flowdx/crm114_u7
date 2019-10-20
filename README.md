@@ -144,7 +144,7 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 # IV  - Notwendige Ordner im Mailaccount anlegen
-## 8. Test-E-Mail-Account erstellen (Optional)
+## 8. OPTIONAL: Test-E-Mail-Account erstellen
 
 An dieser Stelle musst du eine Entscheidung treffen: Entweder du richtest den Spamfilter für einen bestehenden Mailaccount ein oder du erstellst zu Testzwecken erstmal einen neuen Test-Mailaccount. Sofern du dich mit .qmail- und .mailfilter-Dateien bisher noch nicht auskennst empfehle ich, vorerst einen Test-Mailaccount zu erstellen und deine produktiven Mailaccounts erst anzutasten, sofern du sicher bist, zu wissen, was du tust. Es ist problemlos möglich, die Spamfilterung dann später auf beliebig viele weitere Mailaccounts auf dem selben U7 auszuweiten.
 
@@ -206,7 +206,7 @@ nano ~/.mailfilter_[!USERNAME!]         # Öffnet die Datei zum Bearbeiten
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text in die nun geöffnete Datei eingeben:\
-(Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
+(Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)\
 **Wichtig:** Sofern bereits eine .mailfilter-Datei für den Mailaccount existiert, kann das folgende nicht einfach übernommen werden. Stattdessen muss es in die vorhandenden Regelungen ggf. angepasst eingebaut werden.
 ```
 MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
@@ -241,16 +241,16 @@ nano ~/.qmail-[!USERNAME!]        # Öffnet die Datei zum Bearbeiten
 Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text in den nun offenen nano-Editor eingeben:\
-(Copy & Paste ist möglich. Auch hier das Anpassen der Zeile nicht vergessen!)
+(Copy & Paste ist möglich. Auch hier das Anpassen der Zeile nicht vergessen!)\
 **Wichtig:** Sofern bereits eine .qmail-Datei für den Mailaccount existiert, kann das folgende nicht einfach übernommen werden. Stattdessen muss es in die vorhandenden Regelungen ggf. angepasst eingebaut werden.
 ```
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
 Speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-## 11. OPTIONAL: Ankommende E-Mails der Haupt-Mailadresse in den Test einbeziehen
+## 11. OPTIONAL: Ankommende E-Mails des produktiven Mailaccounts in Kopie an den Test-Mailaccount weiterleiten
 
-Es ist sinnvoll, ankommende E-Mails deiner bereits vorhandenen, produktiven E-Mail-Adresse wie bisher auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, ohne vorerst in die gewohnten Abläufe der produktiven E-Mail-Adresse einzugreifen.
+Sofern du dich für einen Test-Mailaccount entschieden hast ist es sinnvoll, ankommende E-Mails deiner bereits vorhandenen, produktiven E-Mail-Adresse wie bisher auf regulärem Weg (ohne Spamfilterung) zuzustellen und **zusätzlich** auf die Test-E-Mail-Adresse mit Spamfilterung zuzustellen. So kann das Verhalten des Spamfilters bei real ankommenden Mails getestet werden, ohne vorerst in die gewohnten Abläufe der produktiven E-Mail-Adresse einzugreifen.
 
 Um dies zu erreichen die **vorhandene** .qmail-Datei der produktiven E-Mail-Adresse um die Zustellung an die .mailfilter-Datei **ergänzen**.
 
