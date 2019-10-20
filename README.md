@@ -263,7 +263,14 @@ Die .qmail-Datei, z.B. `.qmail-meinehauptmailadresse`,  könnte dann so aussehen
 Nun kannst du im Test-E-Mail-Account risikofrei testen und dort CRM114 trainieren. Dieses Training hilft dir auch bereits für die Zukunft, denn nach der Umstellung des Spamfilters auf weitere E-Mail-Accounts bleiben die antrainierten Regeln erhalten. CRM114 legt für die Spamerkennung eine globale Erkennungsdatenbank an, die für alle eingebundenen E-Mail-Adressen eines Uberspace gleichzeitig gültig ist. In diesem Fall ist das eine nützliche Sache, aber es mag auch Anwendungsfälle geben, in denen dieses Verhalten unerwünscht ist. Daher ist es sinnvoll, sich das bewusst zu machen.
 # VI  - Anleitung zur Nutzung und zum Anlernen
 ## 12. CRM114 testen, nutzen und trainieren.
-CRM114 lernt, Spam und Ham zu erkennen, indem du ihm zu Anfang für eingehende Mails zeigst, was Spam und Ham für dich ist. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
+Jede eingehende E-Mail wird vom CRM114 einer Prüfung unterzogen und bekommt eine von drei möglichen Kennzeichnungen: Ham, Spam oder Unsure (also Unsicher). Je nach Kennzeichnung verfährt CRM114 mit der E-Mail unterschiedlich wie folgt:
+- **Ham**: Die E-Mail wird im Posteingang abgelegt.
+- **Spam**: Die E-Mail wird im Ordner `0 Spamfilter/als Spam erkannt` abgelegt.
+- **Unsure**: Die E-Mail wird im Posteingang abgelegt und der Betreff wird um `[UNSURE]` ergänzt.
+
+
+
+Zu Anfang wird CRM114 eingehende E-Mails mit einem [UNSURE] im Betreff versehen. Dies zeigt dir an, dass CRM114 noch nicht weiß, wie es mit dieser E-Mail umgehen soll.Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
 
 -> Hier fehlt derzeit noch einiges an Text
 
