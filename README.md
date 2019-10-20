@@ -281,7 +281,7 @@ Das Anlernen erfolgt über die beiden Ordner `0 Spamfilter/als Spam lernen` und 
 - Mails, die als **Spam** angelernt werden und danach gelöscht werden sollen, kann man in den Ordner `0 Spamfilter/als Spam lernen` verschieben.
 
 >**Beispiel 1**:\
->Eine E-Mail landet in deinem Posteingang und wurde im Betreff mit [UNSURE] gekennzeichnet. Diese E-Mail ist Ham und du möchtest, dass solche E-Mails zukünftig von CRM114 auch als Ham erkannt werden (also kein [UNSURE] mehr bekommen). Diese E-Mail **kopierst** du in den Ordner `0 Spamfilter/als Ham lernen` und belässt die originale E-Mail in deinem Posteingang (oder sortierst sie nach deinem Bedarf in einen anderen Ordner). Würdest du die E-Mail in den Ham-Lernordner verschieben, so wäre sie nach dem Anlernen gelöscht.
+>Eine E-Mail landet in deinem Posteingang und wurde im Betreff mit [UNSURE] gekennzeichnet. Diese E-Mail ist Ham und du möchtest, dass solche E-Mails zukünftig von CRM114 auch als Ham erkannt werden (also kein [UNSURE] mehr bekommen). Diese E-Mail **kopierst** du in den Ordner `0 Spamfilter/als Ham lernen` und belässt die originale E-Mail in deinem Posteingang (oder sortierst sie nach deinem Bedarf in einen anderen Ordner). Würdest du die E-Mail in den Ham-Lernordner verschieben, so wäre sie nach dem Anlernen für immer gelöscht.
 
 >**Beispiel 2**:\
 >Eine E-Mail landet in deinem Posteingang (ganz gleich ob mit oder ohne [UNSURE]). Diese E-Mail ist aber Spam, und du möchtest, dass solche E-Mails zukünftig von CRM114 auch als Spam erkannt werden. Da du diese E-Mail nach dem Anlernen auch garnicht mehr gespeichert wissen willst, **verschiebst** du diese E-Mail in den Ordner `0 Spamfilter/als Spam lernen`. Nach dem Anlernen durch CRM114 ist diese E-Mail dann gelöscht.
