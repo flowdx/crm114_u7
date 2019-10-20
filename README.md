@@ -271,10 +271,11 @@ Je nach Kennzeichnung verfährt CRM114 mit der E-Mail unterschiedlich wie folgt:
 
 Zu Anfang wird CRM114 viele eingehende E-Mails mit einem [UNSURE] im Betreff versehen und nur wenige E-Mails im Spam-Erkannt-Ordner ablegen. CRM114 muss lernen, die E-Mails in deinem Sinne einzuschätzen. Dazu musst du CRM114 zeigen, ob eingehende E-Mails aus deiner Sicht Spam oder Ham darstellen. Es ist auch möglich (und sinvoll), CRM114 zu korrigieren, wenn es eine eingehende E-Mail falsch eingeschätzt hat.
 
-Das Anlernen erfolgt über die beiden Ordner `0 Spamfilter/als Spam lernen` und `0 Spamfilter/als Ham lernen`, mit deren Hilfe du CRM114 E-Mails zum Lernen vorlegen kannst.\
-**GANZ WICHTIG: E-Mails, die du in diese Ordner speicherst, werden nach dem Anlernen durch CRM114 unwiderbringlich gelöscht. Aus diesem Grund muss die folgende Regelung verstanden und eisern beachtet werden:**
-- Test
-- Test
+Das Anlernen erfolgt über die beiden Ordner `0 Spamfilter/als Spam lernen` und `0 Spamfilter/als Ham lernen`, mit deren Hilfe du CRM114 E-Mails zum Lernen vorlegen kannst.
+
+**GANZ WICHTIG: E-Mails, die du in diese Ordner speicherst, werden nach dem Anlernen durch CRM114 !! unwiederbringlich gelöscht !!. Aus diesem Grund muss die folgende Regelung verstanden und eisern beachtet werden:**
+- Mails, die als **Ham** angelernt werden sollen, in den Ordner `0 Spamfilter/als Ham lernen` immer **KOPIEREN !!**
+- Mails, die als **Spam** angelernt werden sollen, in den Ordner `0 Spamfilter/als Spam lernen` verschieben.
 
 Dies zeigt dir an, dass CRM114 noch nicht weiß, wie es mit dieser E-Mail umgehen soll. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
 
