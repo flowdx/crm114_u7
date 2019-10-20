@@ -269,16 +269,26 @@ Je nach Kennzeichnung verfährt CRM114 mit der E-Mail unterschiedlich wie folgt:
 - **Spam**: Die E-Mail wird im Ordner `0 Spamfilter/als Spam erkannt` abgelegt.
 - **Unsure**: Die E-Mail wird im Posteingang abgelegt und der Betreff wird um `[UNSURE]` ergänzt.
 
+Den Ordner `0 Spamfilter/als Spam erkannt` musst du regelmäßig prüfen!\
+Hier sammeln sich die E-Mails an, die CRM114 als Spam erkennt. E-Mails in diesem Ordner, die auch wirklich Spam sind, kannst du einfach löschen und musst sie CRM114 nicht erneut zum Anlernen vorlegen. Findest du in diesem Ordner allerdings eine E-Mail, die eigentlich kein Spam ist, dann ist Sorgfalt geboten! Die folgenden Erklärungen sind dann besonders wichtig, insbesondere Beispiel 3!
+
 Zu Anfang wird CRM114 viele eingehende E-Mails mit einem [UNSURE] im Betreff versehen und nur wenige E-Mails im Spam-Erkannt-Ordner ablegen. CRM114 muss lernen, die E-Mails in deinem Sinne einzuschätzen. Dazu musst du CRM114 zeigen, ob eingehende E-Mails aus deiner Sicht Spam oder Ham darstellen. Es ist auch möglich (und sinvoll), CRM114 zu korrigieren, wenn es eine eingehende E-Mail falsch eingeschätzt hat.
 
 Das Anlernen erfolgt über die beiden Ordner `0 Spamfilter/als Spam lernen` und `0 Spamfilter/als Ham lernen`, mit deren Hilfe du CRM114 E-Mails zum Lernen vorlegen kannst.
 
-**GANZ WICHTIG: E-Mails, die du in diese Ordner speicherst, werden nach dem Anlernen durch CRM114 !! unwiederbringlich gelöscht !!. Aus diesem Grund muss die folgende Regelung verstanden und eisern beachtet werden:**
+**GANZ GANZ WICHTIG: E-Mails, die du in die Lernordner speicherst, werden nach dem Anlernen durch CRM114 !! unwiederbringlich gelöscht !!. Es besteht also das Risiko, E-Mails unwiederbringlich zu verlieren, wenn nicht sorgfältig mit der Lernfunktion umgegangen wird. Aus diesem Grund müssen die folgenden Regeln verstanden und eisern beachtet werden:**
 - **!!** Mails, die als **Ham** angelernt werden sollen, in den Ordner `0 Spamfilter/als Ham lernen` **immer KOPIEREN !!**
-- Mails, die als **Spam** angelernt werden sollen, in den Ordner `0 Spamfilter/als Spam lernen` verschieben.
+- Mails, die als **Spam** angelernt werden und danach gelöscht werden sollen, kann man in den Ordner `0 Spamfilter/als Spam lernen` verschieben.
 
 >**Beispiel 1**:\
 >Eine E-Mail landet in deinem Posteingang und wurde im Betreff mit [UNSURE] gekennzeichnet. Diese E-Mail ist Ham und du möchtest, dass solche E-Mails zukünftig von CRM114 auch als Ham erkannt werden (also kein [UNSURE] mehr bekommen). Diese E-Mail **kopierst** du in den Ordner `0 Spamfilter/als Ham lernen` und belässt die originale E-Mail in deinem Posteingang (oder sortierst sie nach deinem Bedarf in einen anderen Ordner). Würdest du die E-Mail in den Ham-Lernordner verschieben, so wäre sie nach dem Anlernen gelöscht.
+
+>**Beispiel 2**:\
+>Eine E-Mail landet in deinem Posteingang (ganz gleich ob mit oder ohne [UNSURE]). Diese E-Mail ist aber Spam, und du möchtest, dass solche E-Mails zukünftig von CRM114 auch als Spam erkannt werden. Da du diese E-Mail nach dem Anlernen auch garnicht mehr gespeichert wissen willst, **verschiebst** du diese E-Mail in den Ordner `0 Spamfilter/als Spam lernen`. Nach dem Anlernen durch CRM114 ist diese E-Mail dann gelöscht.
+
+>**Beispiel 3**:\
+>Eine E-Mail wird von CRM114 beim Eingang als Spam erkannt und aus diesem Grund findest du sie nicht im Posteingang sondern im Ordner `0 Spamfilter/als Spam erkannt`. Du stellst fest, dass diese E-Mail fälschlicherweise als Spam erkannt wurde und sie für dich eigentlich Ham darstellt. Nun gehst du wie folgt vor: Zuerst **kopierst** du die E-Mail in den Posteingang, um sie dort zu behalten. Anschließend **verschiebst** du die E-Mail aus dem Spam-Erkannt-Ordner in den Ham-Lernordner, damit CRM114 lernt, solche E-Mails in Zukunft als Ham anstelle von Spam einzustufen. Die E-Mail wird nach dem Anlernen aus dem Ham-Lernordner gelöscht sein, aber im Posteingang ist sie noch vorhanden.
+
 
 Dies zeigt dir an, dass CRM114 noch nicht weiß, wie es mit dieser E-Mail umgehen soll. Dazu eingehende E-Mails immer wie folgt markierenentweder als Spam (Spammails aus dem Posteingang in den Ordner "als Spam lernen" verschieben) oder Ham (Hammails aus dem Posteingang in den Ordner "als Ham lernen" kopieren) präsentieren.
 
