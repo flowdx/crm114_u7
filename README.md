@@ -16,7 +16,7 @@ VII - Sonstiges
 ## 1. Hintergrund
 Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Bisher existiert unter U7 vorimplementiert nur folgender, sehr rudimentärer, Spamschutz: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Grundsätzlich wäre es möglich, via qmail und mailfilter, auch für niedrigere Rspamd-Scores eigene Verarbeitungsschritte einzubauen und so die Schwelle für Spam/Ham den eigenen Bedürfnissen nach festzulegen. Um aber Spam wirklich effektiv ausfiltern zu können, benötigt man einen trainierbaren Spamfilter, der in vielen Software-Mailclients wie z.B. Thunderbird häufig fester Bestandteil ist. Wer über mehrere Geräte hinweg auf E-Mails zugreift wird aber nicht auf einen serverseitigen lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen Spamfilter einzurichten.
 
-Noch der Hinweis, dass es auf dem Vorgängerprodukt U6 vorinstallierte Spamfilter-Software gibt (SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar)), die man selbst einrichten muss/kann. Auf U7 werden diese Spamfilter-Programme aber nicht mehr von Vornherein angeboten, da sie unmaintained sind. Diese Anleitung imitiert in etwa das, von U6 gewohnte Verhalten von DSPAM, indem es CRM114 auf U7 nutzt. Allen, die das Spamfiltern und Anlernen von U6 kennen, sollten sich hier also schnell zurechtfinden.
+Noch der Hinweis, dass es auf dem Vorgängerprodukt U6 vorinstallierte Spamfilter-Software gibt (SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar)), die man selbst einrichten muss/kann. Auf U7 werden diese Spamfilter-Programme aber nicht mehr von Vornherein angeboten, da sie unmaintained sind. Diese Anleitung imitiert in etwa das von U6 gewohnte Verhalten von DSPAM, indem es CRM114 auf U7 nutzt. Allen, die das Spamfiltern und Anlernen von U6 kennen, sollten sich hier also schnell zurechtfinden.
 
 ## 2. Spamfiltersoftware der Wahl: CRM114
 
@@ -80,7 +80,7 @@ curl -sSL https://raw.githubusercontent.com/flowdx/crm114_u7/master/install_crm1
 
 ### 5.2 ODER: Manuelle Installation
 
-Die folgenden Zeilen in der Shell ausführen, diese entsprechen den Schritten in der install_crm114_u7.sh aus der Automatischen Installation:
+**Alternativ zur automatischen Installation** können die folgenden Zeilen manuell inder Shell ausgeführt werden. Diese entsprechen den Schritten in der install_crm114_u7.sh aus der Automatischen Installation:
 
 Der folgende Codeblock enthält keine [!USERNAME!]-Variable. Demnach ist es möglich, die folgenden Shell-Befehle komplett in einem Block via Copy & Paste auszuführen, sofern dein SSH-Client das unterstützt (putty kann das).
 
@@ -129,7 +129,7 @@ Hier wird das Script 'learn_maildir' im Ordner crm114 manuell ausgeführt, und z
 
 ## 7. Anlernen und Aufräumen via Cronjob automatisieren
 
-Das Script 'learn_maildir' (hier jetzt nicht mehr im Verbose-mode) geht bei Aufruf immer alle Mailaccounts des Uberspace durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern Mails vorhanden sind und zeigt diese CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, deine Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
+Das Script 'learn_maildir' (ab hier nicht mehr im Verbose-mode) geht bei Aufruf immer alle Mailaccounts des Uberspace durch und prüft, ob in dem Mailaccount die beiden Ordner "als Spam lernen" und "als Ham lernen" vorhanden sind. Sind diese Ordner vorhanden, so prüft das Script, ob in den Ordnern E-Mails vorhanden sind und zeigt diese CRM114 entweder als Spam oder als Ham. So lernt CRM114 mit der Zeit, E-Mails zuverlässig einzuordnen. Nach dem Anlernen werden die E-Mails aus den beiden Ordnern gelöscht. Dieses Script sollte regelmäßig automatisch ausgeführt werden. Deshalb wird im folgenden ein Cronjob angelegt, der das Script 'learn_maildir' alle 20 Minuten automatisch aufruft.
 
 Das Script 'cache_cleanup' sorgt dafür, dass die Cache-Dateien von CRM114 regelmäßig entschlackt werden. Auch dafür wird im folgenden ein Cronjob angelegt, der regelmäßig das Script cache_cleanup aufruft.
 
@@ -144,9 +144,9 @@ und dort die folgende zwei Zeilen am Ende der Datei ergänzen:
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 # IV  - Notwendige Ordner im Mailaccount anlegen
-## 8. Einen neuen Mailaccount zum Testen erstellen
+## 8. Test-E-Mail-Account erstellen (Optional)
 
-Zum Testen dieses Tutorials empfehle ich, eine bereits vorhandene E-Mail-Adresse **vorerst nicht anzutasten**. Stattdessen bitte zuerst nur eine Test-E-Mail-Adresse einrichten und für den Test von CRM114 nutzen. Es ist problemlos möglich, die Spamfilterung bei Gefallen später auf beliebig viele weitere E-Mail-Adressen auf dem selben U7 auszuweiten.
+An dieser Stelle musst du eine Entscheidung treffen: Entweder du richtest den Spamfilter für einen bestehenden Mailaccount ein oder du erstellst zu Testzwecken erstmal einen neuen Test-Mailaccount. Sofern du dich mit .qmail- und .mailfilter-Dateien bisher noch nicht auskennst empfehle ich, vorerst einen Test-Mailaccount zu erstellen und deine produktiven Mailaccounts erst anzutasten, sofern du sicher bist, zu wissen, was du tust. Es ist problemlos möglich, die Spamfilterung dann später auf beliebig viele weitere Mailaccounts auf dem selben U7 auszuweiten.
 
 **Hier ein weiteres mal der Verweis auf:** ***"3.2 Die Platzhalter-Variable [!USERNAME!]"***\
 Ab hier könntest du `[!USERNAME!]` z.B. konsequent durch `spamfiltertest` ersetzen. 
@@ -172,12 +172,13 @@ Weitere individuelle Ordner in der INBOX sind natürlich problemlos möglich. Di
                  
 Die geforderte Ordnerstruktur lässt sich mit folgenden Befehlen komfortabel einrichten.
 
-Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde. Dazu folgendes, entsprechend angepasst, in die Shell eingeben (für dieses Tutorial erstmal für den oben angelegten Test-Mailaccount):
+Zuerst eine Umgebungsvariable mit dem Benutzernamen füllen, unter dem der Mailaccount angelegt wurde. Dazu folgendes, entsprechend angepasst, in die Shell eingeben (für dieses Tutorial z.B. den oben angelegten Test-Mailaccount):
 ```Shell
 export MAILUSERNAME=[!USERNAME!]
 ```
 
 Anschließend die folgenden vier Befehle in der Shell ausführen um die Ordner in dem Mailaccount anzulegen:
+(Die Ordner werden nur angelegt, sofern sie noch nicht existieren.)
 ```Shell
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter"                
 test -d "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen" || maildirmake "$HOME/users/$MAILUSERNAME/.0 Spamfilter.als Ham lernen"
@@ -189,11 +190,11 @@ Prüfe nun in deinem Mailclient, ob die erstellten Ordner angezeigt werden!\
 Sollte dies nicht der Fall sein, ist es nötig, die neu angelegten Ordner in den Einstellungen manuell sichtbar zu machen bzw. zu abonnieren, damit sie im Mailclient auftauchen!\
 Im [RainLoop-Webmail-Client von Uberspace7](https://webmail.uberspace.de/) blendet man Ordner wie folgt ein: `Settings > Folders` aufrufen und über einen Klick auf die jeweiligen Augen-Symbole einblenden.
 
-# V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount
+# V   - Aktivierung der Spam/Ham-Prüfung bei eingehenden Mails für einen Mailaccount
 
 ## 10. Spamerkennung für einen Mailaccount einrichten
 
-**Wichtig: Die folgenden Schritte sollten so nur ausgeführt werden, wenn die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
+**Wichtig: Die folgenden Schritte sollten so nur für den Test-Mailaccount ausgeführt werden. Oder anders: Nur ausführen, sofern die .qmail-Datei und die .mailfilter-Datei bisher noch nicht vorhanden sind.**
 
 ### 10.1 .mailfilter-Datei erstellen
 Zuerst folgende Befehle, **immer jeweils angepasst**, in der Shell ausführen.
@@ -206,6 +207,7 @@ Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text in die nun geöffnete Datei eingeben:\
 (Copy & Paste ist möglich. Auch hier das Anpassen in der ersten Zeile nicht vergessen!)
+**Wichtig:** Sofern bereits eine .mailfilter-Datei für den Mailaccount existiert, kann das folgende nicht einfach übernommen werden. Stattdessen muss es in die vorhandenden Regelungen ggf. angepasst eingebaut werden.
 ```
 MAILUSERNAME=[!USERNAME!]             # <--- Benutzernamen anpassen nicht vergessen!
 MAILDIR="$HOME/users/$MAILUSERNAME"
@@ -240,6 +242,7 @@ Durch den nano-Befehl öffnete sich die Texteingabe für die Datei.
 
 Den folgenden Text in den nun offenen nano-Editor eingeben:\
 (Copy & Paste ist möglich. Auch hier das Anpassen der Zeile nicht vergessen!)
+**Wichtig:** Sofern bereits eine .qmail-Datei für den Mailaccount existiert, kann das folgende nicht einfach übernommen werden. Stattdessen muss es in die vorhandenden Regelungen ggf. angepasst eingebaut werden.
 ```
 |maildrop $HOME/.mailfilter_[!USERNAME!]
 ```
