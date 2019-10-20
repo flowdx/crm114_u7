@@ -294,7 +294,7 @@ Umlernen ist also problemlos möglich: Eingehende E-Mails, die Spam sind, aber i
 
 Zu Anfang ist es notwendig, CRM114 viele ankommende E-Mail via Lernordner zu zeigen, und zwar sowohl Spam als auch Ham! Nach einiger Zeit wird CRM114 gut darin, ankommende E-Mails korrekt einzuschätzen. Dann ist es nur noch sporadisch notwendig, eingehende E-Mails zum Anlernen zu übergeben, insbesondere die, die mit [UNSURE] gekennzeichnet sind. Mails im Spam-Erkannt-Ordner sollten regelmäßig durchgesehen werden: Korrekt erkannter Spam kann einfach gelöscht werden, fehlerhaft erkannter Spam muss in den Posteingang verschoben und anschließend als Ham zum Umlernen gegenüber CRM114 präsentiert werden.
 
--> Hier fehlt derzeit noch einiges an Text
+Ich rate an dieser Stelle davon ab, CRM114 nach der Installation mit einem Haufen alter E-Mails zu trainieren! Das ist auch garnicht nötig, denn CRM114 lernt anhand neuer E-Mails sehr schnell.
 
 ## 13. Test beenden und Spamfilter für die produktive E-Mail-Adresse einrichten
 Sofern du mit dem Testlauf zufrieden bist, kannst du später folgende Schritte durchführen, um CRM114 für deine eigentliche E-Mail-Adresse zu aktivieren:
