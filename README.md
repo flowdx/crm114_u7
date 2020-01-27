@@ -1,8 +1,6 @@
 # Lernenden Spamfilter auf Uberspace7 selbst betreiben 
 Vorweg: **Ein Dank an Bernhard Ehlers!** Diese Anleitung basiert auf seinem Blogtext und seinen Config-Dateien. Er gab mir die Erlaubnis, sie als Grundlage zu verwenden.
 
-# DIESES TUTORIAL BEFINDET SICH NOCH IM AUFBAU!
-
 I   - Grundsätzliches und Vorbereitungen\
 II  - Installation der Spamfilter-Software\
 III - Die Lernfunktionen aktivieren\
