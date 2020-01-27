@@ -5,7 +5,7 @@ I   - Grundsätzliches und Vorbereitungen\
 II  - Installation der Spamfilter-Software\
 III - Die Lernfunktionen aktivieren\
 IV  - Notwendige Ordner im Mailaccount anlegen\
-V   - Aktivierung der automatischen Spamprüfung für einen Mailaccount\
+V   - Aktivierung der Spam/Ham-Prüfung bei eingehenden Mails für einen Mailaccount\
 VI  - Anleitung zur Nutzung und zum Anlernen\
 VII - Sonstiges
 
@@ -299,7 +299,7 @@ Ich rate an dieser Stelle davon ab, CRM114 nach der Installation mit einem Haufe
 **Für alle im folgenden beschriebenen Einschränkungen von CRM114 gibt es eine bereits implementierte Lösung!**
 
 ### 13.1 CRM114 hat Schwierigkeiten beim Anlernen "großer" E-Mails (Workaround implementiert)
-**Problembeschreibung:** Eine E-Mail, die zum Anlernen in einem Ordner liegt und die in Summe größer als 3,9Mb ist, bringt CRM114 auf Uberspache (und wohl generell) zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). CRM114 erwartet wohl, dass ihm E-Mails immer frei von Anhängen bzw. gekürzt auf eine passable Größe übergeben werden. Aber auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
+**Problembeschreibung:** Eine E-Mail, die zum Anlernen in einem Ordner liegt und die in Summe größer als 3,9Mb ist, bringt CRM114 auf Uberspace (und wohl generell) zu einem kompletten Abbruch der Ausführung des Anlernvorgangs. Jede Ausführung des Anlernens scheitert, so lange sich diese E-Mail in einem Anlernordner befindet. Nach dem Löschen dieser E-Mail aus dem Anlernordner funktioniert die Erkennung wieder reibungslos. Ursache ist ein cachebezogenes Problem der Komponenten von CRM114, für das ich keinen Fix gefunden haben. (Weitere Infos [hier](https://sourceforge.net/p/crm114/mailman/message/22532062/) und [hier](https://sourceforge.net/p/crm114/mailman/message/28066834/)). CRM114 erwartet wohl, dass ihm E-Mails immer frei von Anhängen bzw. gekürzt auf eine passable Größe übergeben werden. Aber auch wenn Spammer selten E-Mails mit großen Dateianhängen verschicken, so kann es doch gewünscht und sinnvoll sein, CRM114 auch E-Mails zum Anlernen vorzulegen, die große Dateianhänge haben, insbesondere bei Ham.\
 \
 **Implementierte Lösung: Zwei Varianten zur Fehlervermeidung sind implementiert:**\
 Genutzt wird immer **entweder** Variante 1 **oder** Variante 2. Ein Wechsel zwischen beiden Varianten ist jederzeit möglich, auch im laufenden Betrieb.
