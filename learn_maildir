@@ -5,7 +5,7 @@ set -euo pipefail
 ########################################################################
 # 2015-02-23 Christopher Hirschmann c.hirschmann@jonaspasche.com
 # 2018-04-16 Bernhard Ehlers be@bernhard-ehlers.de
-# 2019-09-27 Florian Eckert
+# 2020-02-01 Florian Eckert
 ########################################################################
 #
 # This program is free software: you can redistribute it and/or modify
@@ -57,11 +57,11 @@ TRASHDIR=".Trash"
 SPAMFILTER="$HOME/crm114/crm114 -u $HOME/crm114 mailreaver.crm --"
 
 MAILSIZELIMITkb=3915;  
-
 CACHEWORKAROUND=1;    # Choose between 1 and 2
                       # Mails for learning being larger than setted $MAILSIZELIMITkb will be...
                       #           1: ...deleted without showing them to CRM114
                       #           2: ...truncated to the $MAILSIZELIMIT and will be shown to CRM114 (not yet confirmed to be 100% working)
+MOVEHAMBACKTOINBOXAFTERLEARNING=0;
 
 while getopts ":hvn" Option
 do
@@ -168,6 +168,16 @@ do
                     then
                         echo -e "\tSize of the mail: ${thismailsizekb}kb";
                     fi
+                  
+                    if [ "${MOVEHAMBACKTOINBOXAFTERLEARNING}" == "1" ];
+                    then
+                        cp -p "${hammail}" "${DIR}/cur";
+                        if [ "${VERBOSE}" == "1" ];
+                        then
+                            echo -e "\tMail was copied \"back\" to Inbox.";
+                        fi
+                    fi                  
+                  
                     if [ $thismailsizekb -ge $MAILSIZELIMITkb ] && [ "${CACHEWORKAROUND}" == "2" ];    # if size of mail is greater or equal than maxmailsizelimit
                     then
                         echo -e "\tMail is larger than setted limit. Workaround 2 is active. Will truncate the mailfile to setted limit of ${MAILSIZELIMITkb}kb";
