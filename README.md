@@ -294,7 +294,23 @@ Ich rate an dieser Stelle davon ab, CRM114 nach der Installation mit einem Haufe
 # VII - Sonstiges
 ## 12. Tipps
 
--> noch nicht vorhanden
+### 12.1 Eigene Ordnerstruktur verwenden
+Eine eigene Ordnerstruktur in Abweichung zu Punkt 9 zu verwenden ist problemlos möglich. Wichtig ist, dass immer drei Ordner existieren müssen, damit es wie beschrieben funktioniert: Jeweils ein Ordner für erkannten Spam, Mails zum Anlernen als Spam und Mails zum Anlernen als Ham.
+
+Erst die Ordner mit gewünschtem Namen und Verschachtelung im Mailaccount anlegen, dann folgende Dateien ändern:
+
+**Anlernordner für Ham und Spam**
+In der Datei 'learn_maildir' die folgenden zwei Zeilen finden und abändern:
+```
+HAMDIR=".0 Spamfilter.als Ham lernen"
+SPAMDIR=".0 Spamfilter.als Spam lernen"
+```
+
+**Ordner, in dem erkannter Spam abgelegt wird**
+In der Datei .mailfilter-Datei (siehe Punkt 10.1) folgende Zeile finden und abändern:
+```
+MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
+```
 
 ## 13. Einschränkungen & deren Lösung
 
