@@ -299,14 +299,14 @@ Eine eigene Ordnerstruktur in Abweichung zu Punkt 9 zu verwenden ist problemlos 
 
 Erst die Ordner mit gewünschtem Namen und Verschachtelung im Mailaccount anlegen, dann folgende Dateien ändern:
 
-**Anlernordner für Ham und Spam**
+**Ham- und Spam-Anlernordner anpassen**\
 In der Datei 'learn_maildir' die folgenden zwei Zeilen finden und abändern:
 ```
 HAMDIR=".0 Spamfilter.als Ham lernen"
 SPAMDIR=".0 Spamfilter.als Spam lernen"
 ```
 
-**Ordner, in dem erkannter Spam abgelegt wird**
+**Spam-Erkannt-Order anpassen**\
 In der Datei .mailfilter-Datei (siehe Punkt 10.1) folgende Zeile finden und abändern:
 ```
 MAILDIRSPAM="$MAILDIR/.0 Spamfilter.als Spam erkannt"
