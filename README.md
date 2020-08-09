@@ -146,7 +146,7 @@ MAILTO=""
 ```
 Nun speichern und schließen, wie gewohnt mit: Strg+X, `y`, Enter.
 
-Anmerkung: MAILTO="" sorgt dafür, dass die regulären Ausgaben, z.B. auch bei erfolgreichem Anlernen von E-Mails, des Scripts 'learn_maildir' nicht als E-Mail zugestellt werden. Fehlermeldungen des Scripts werden trotz der Einstellung weiterhin via E-Mail zugeschickt. Details dazu im U7-Manual unter [U7-Manual > 'Daemons' > 'Cron' > 'Mails'](https://manual.uberspace.de/daemons-cron.html#mails))
+Anmerkung: MAILTO="" sorgt dafür, dass die regulären Ausgaben, z.B. auch bei erfolgreichem Anlernen von E-Mails, des Scripts 'learn_maildir' nicht als E-Mail zugestellt werden. Fehlermeldungen des Scripts werden trotz der Einstellung weiterhin via E-Mail zugeschickt. Details dazu im U7-Manual unter [U7-Manual > 'Daemons' > 'Cron' > 'Mails'](https://manual.uberspace.de/daemons-cron.html#mails)
 
 # IV  - Notwendige Ordner im Mailaccount anlegen
 ## 8. Den "richtigen" Mailaccount finden
