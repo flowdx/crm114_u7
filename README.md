@@ -349,6 +349,11 @@ Es ist möglich, das Limit von 3,9 MB abzuändern. Ich rate aber ausdrücklich d
 ### 13.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
 **Implementierte Lösung:** Eingehende E-Mails, die größer als 2 MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2 MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 
+### 13.3 DKIM-Validierung für geprüfte E-Mails scheitert (Workaround implementiert)
+Wird beim Lesen von E-Mails die DKIM-Signatur von eingegangen E-Mails validiert und scheitert diese, so liegt das möglicherweise daran, dass CRM114 den `Message-ID`-Header modifiziert hat.
+CRM114 fügt jeder E-Mail eine eigene ID hinzu, die sowohl als zusätzlicher Header (`X-CRM114-CacheID`) als auch als Ergänzung an den `Message-ID`-Header gespeichert wird.
+Durch Auskommentieren der Zeile `call /:mungmail_add_comment:/ [Message-Id: sfid-:*:cid:]` in der Datei ~/crm114/maillib.crm kann die Modifikation des `Message-ID`-Headers ausgeschaltet werden.
+Dadurch bleiben DKIM-Signaturen gültig und durch den `X-CRM114-CacheID`-Header bleibt auch die Funktionalität für CRM114 erhalten.
 
 ## 14. Credits
 
