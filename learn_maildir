@@ -6,6 +6,7 @@ set -euo pipefail
 # 2015-02-23 Christopher Hirschmann c.hirschmann@jonaspasche.com
 # 2018-04-16 Bernhard Ehlers be@bernhard-ehlers.de
 # 2020-02-01 Florian Eckert
+# 2021-11-23 skara skara@gmx.org
 ########################################################################
 #
 # This program is free software: you can redistribute it and/or modify
@@ -30,7 +31,7 @@ set -euo pipefail
 # \
 #  \___ Inbox
 #   \
-#    \___ 0 Spamfilter
+#    \___ Spam
 #     \
 #      \___ als Ham lernen
 #      |
@@ -51,8 +52,8 @@ set -euo pipefail
 DRYRUN=0;
 VERBOSE=0;
 
-HAMDIR=".0 Spamfilter.als Ham lernen"
-SPAMDIR=".0 Spamfilter.als Spam lernen"
+HAMDIR=".Spam.als Ham lernen"
+SPAMDIR=".Spam.als Spam lernen"
 TRASHDIR=".Trash"
 SPAMFILTER="$HOME/crm114/crm114 -u $HOME/crm114 mailreaver.crm --"
 

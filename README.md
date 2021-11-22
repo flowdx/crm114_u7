@@ -12,7 +12,7 @@ VII - Sonstiges
 # I - Grundsätzliches und Vorbereitungen
 
 ## 1. Hintergrund
-Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Als Spamschutz bieten die Ubernauten auf U7 von sich aus derzeit "nur" folgenden basalen Spamschutz an: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)). Grundsätzlich wäre es möglich, via qmail und mailfilter, auch für niedrigere Rspamd-Scores eigene Verarbeitungsschritte einzubauen und so die Schwelle für Spam/Ham gemäß den eigenen Bedürfnissen festzulegen. Um aber Spam wirklich effektiv ausfiltern zu können benötigt man einen trainierbaren Spamfilter, der in vielen Software-Mailclients (wie z.B. Thunderbird) häufig fester Bestandteil ist (also clientseitig). Alle, die über mehrere Geräte hinweg auf einen E-Mail-Account zugreifen, werden aber nicht auf einen zentralen (serverseitigen) lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen lernenden serverseitigen Spamfilter einzurichten.
+Stand heute bietet der Hosting-Anbieter [uberspace](https://www.uberspace.de) auf seinem Produkt [Uberspace7](https://blog.uberspace.de/tag/uberspace7/) (abgekürzt U7) von Haus aus keinen *lernenden* bzw. *trainierbaren* Spamfilter an. Als Spamschutz bieten die Ubernauten auf U7 von sich aus derzeit "nur" folgenden basalen Spamschutz an: Jede eingehende E-Mail wird automatisch mit einem Rspamd-Score versehen und bei einem Wert größer 15 sofort gelöscht (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-spam/)). Grundsätzlich wäre es möglich, via qmail und mailfilter, auch für niedrigere Rspamd-Scores eigene Verarbeitungsschritte einzubauen und so die Schwelle für Spam/Ham gemäß den eigenen Bedürfnissen festzulegen. Um aber Spam wirklich effektiv ausfiltern zu können benötigt man einen trainierbaren Spamfilter, der in vielen Software-Mailclients (wie z.B. Thunderbird) häufig fester Bestandteil ist (also clientseitig). Alle, die über mehrere Geräte hinweg auf einen E-Mail-Account zugreifen, werden aber nicht auf einen zentralen (serverseitigen) lernenden Spamfilter verzichten wollen. Und bis die Ubernauten einen solchen Filter auf U7 anbieten, hilft diese Anleitung dabei, sich selbst einen solchen lernenden serverseitigen Spamfilter einzurichten.
 
 Noch der Hinweis, dass es auf dem Vorgängerprodukt U6, welches inzwischen nicht mehr "buchbar" ist, eine vorinstallierte Spamfilter-Software gab. Dabei handelte es sich aber nicht um die im folgenden verwendete, sondern um SpamAssassin (mit integriertem Regelwerk) und DSPAM (trainierbar). Auf U7 werden diese Spamfilter-Programme aber nicht mehr von den Ubernauten angeboten, da sie unmaintained sind. Diese Anleitung imitiert in etwa das von U6 gewohnte Verhalten von DSPAM, indem es CRM114 auf U7 nutzt. Allen, die das Spamfiltern und Anlernen von U6 kennen, sollten sich hier also schnell zurechtfinden.
 
@@ -21,7 +21,7 @@ Noch der Hinweis, dass es auf dem Vorgängerprodukt U6, welches inzwischen nicht
 Mit folgendem Zitat von Bernhard ist alles gesagt:
 > "Nach etwas Recherche habe ich mich für [CRM114](http://crm114.sourceforge.net) entschieden. Es wurde zwar sehr lange nicht mehr aktualisiert, ist aber weiterhin in vielen Linux-Distributionen präsent. Der Lernalgorithmus ist sehr schnell und effizient, das Programm ist sehr klein und performant."
 
-Der Rspamd-Score, den die Ubernauten für jede E-Mail automatisch bereitstellen (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-filter.html)), wird im Rahmen dieses Tutorials nicht verwendet. CRM114 verrichtet seine Arbeit so gut, dass dies nicht notwendig erscheint. Eine Kombination aus CRM114 und Verwendung von Rspamd-Score wäre natürlich auch möglich, wird hier aber nicht weiter beschrieben.
+Der Rspamd-Score, den die Ubernauten für jede E-Mail automatisch bereitstellen (siehe [U7-Manual > 'Filtering mails'](https://manual.uberspace.de/mail-spam/)), wird im Rahmen dieses Tutorials nicht verwendet. CRM114 verrichtet seine Arbeit so gut, dass dies nicht notwendig erscheint. Eine Kombination aus CRM114 und Verwendung von Rspamd-Score wäre natürlich auch möglich, wird hier aber nicht weiter beschrieben.
 
 ## 3. Grundlagen
 
@@ -349,6 +349,34 @@ Es ist möglich, das Limit von 3,9 MB abzuändern. Ich rate aber ausdrücklich d
 ### 13.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
 **Implementierte Lösung:** Eingehende E-Mails, die größer als 2 MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2 MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 
+### 13.3 Alternative Nutzung
+**Problem:**
+- Sieve wird durch diese Implementation nicht mehr unterstützt.
+- für jeden Nutzer muss die Spamerkennung einzeln aktiviert werden.
+
+Ausgehend von der obigen Anleitung ab **10.1** folgende Änderungen:
+
+- $HOME/.mailfilter wurde bei der Installation erstellt.
+- Als Ordnerstruktur gilt nicht "0 Spamfilter" sondern "Spam" (kann angepasst werden, s.o. 12.1).
+- Spammails kommen nicht nach "Spam.als Spam erkannt" sondern direkt in den Ordner "Spam"
+
+Ordnerstruktur wird bei der ersten eintreffenden Spammail erstellt. Alternativ kann dies auch für alle Mailaccounts erledigt werden (Die Ordner werden nur angelegt, sofern sie noch nicht existieren.)
+
+```Shell
+for i in $HOME/users/* ; do
+if [[ -d "$i" && ! -L "$i" ]]; then
+test -d "$HOME/users/$i/.Spam" || maildirmake "$i/.Spam"                
+test -d "$HOME/users/$i/.Spam.als Ham lernen" || maildirmake "$i/.Spam.als Ham lernen"
+test -d "$HOME/users/$i/.Spam.als Spam lernen" || maildirmake "$i/.Spam.als Spam lernen"
+fi
+done
+```
+
+Zum aktivieren für alle Nutzer wird $HOME/.qmail-default entsprechend angepasst. Alternativ kann es auch nur für einzelne Nutzer sein. Dann entsprechend oben Punkt 10.2. Bei beiden mit folgendem Inhalt:
+
+```
+|maildrop $HOME/.mailfilter
+```
 
 ## 14. Credits
 

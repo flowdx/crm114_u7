@@ -24,6 +24,7 @@ unzip master.zip # Das gezippte Repository entpacken
 rm master.zip    # Das gezippte Repository löschen
 mv ./crm114_u7-master/* ./ # Die Dateien aus dem Entpackordner in den Hauptordner verschieben
 rm -r crm114_u7-master     # Den Entpackordner löschen
+cp spamfolder.template $HOME/.mailfilter && chmod 0600 $HOME/.mailfilter
 chmod 755 cache_cleanup crm114 cssdiff cssmerge cssutil db_init learn_maildir # Die korrekte Berechtigung für die ausführbaren Dateien vergeben
 sh db_init # Die Einrichtung der Datenbank durchführen
 cd ~ # Zurück in den $USER-Ordner
