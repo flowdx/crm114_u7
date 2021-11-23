@@ -1,0 +1,95 @@
+# Based on uberspace7 spamfilter maildrop (/opt/uberspace/etc/spamfolder.template)
+# - added CRM114 support
+# - added rspamd || crm114 filtering
+# - added maildirmake "als Ham lernen" & "als Spam lernen"
+###############
+
+
+# Show mail to Bayes-Spamfilter (CRM114) if it's not larger than 2MB (=2000000 Bytes)
+if ($SIZE < 2000000)
+{
+  if `test -f $HOME/crm114/crm114`
+  {
+    xfilter "'$HOME/crm114/crm114' -u '$HOME/crm114' mailreaver.crm --"
+  }
+}
+
+# This is the common maildrop filter template of Uberspace 7
+
+# import envelope to and envelope sender
+import RECIPIENT
+import SENDER
+
+# set default spam score
+MOVESCORE=5
+
+# set default Maildir
+MAILDIR="$HOME/Maildir"
+
+# check if we're called from a .qmail-EXT instead of .qmail
+import EXT
+if ( $EXT )
+{
+  # does a vmailmgr user named $EXT exist?
+  # if yes, deliver mail to their Maildir instead
+  VUSER_DIRECTORY = `dumpvuser $EXT | grep '^Directory' | awk '{ print $2 }'`
+  if ( $VUSER_DIRECTORY )
+  {
+    MAILDIR="$HOME/$VUSER_DIRECTORY"
+  }
+  else
+  {
+    # no VUSER_DIRECTORY found, so let's check for a catchall
+    CATCHALL_TARGET = `dumpvuser + | grep '^Forward: ' | awk '{ print $2 }'`
+    if ( $CATCHALL_TARGET )
+    {
+      # there is a catchall mailbox, retrieve its directory
+      VUSER_DIRECTORY = `dumpvuser $CATCHALL_TARGET | grep '^Directory' | awk '{ print $2 }'`
+      if ( $VUSER_DIRECTORY )
+      {
+        MAILDIR="$HOME/$VUSER_DIRECTORY"
+      }
+    }
+  }
+}
+
+if ( /^X-Rspamd-Bar: \+{$MOVESCORE,}$/ || /^X-CRM114-Status: *SPAM/:h)
+{
+
+  # This mail is - most probably - spam. Deliver it to the spam folder. Do NOT forward it to external addresses.
+
+  SPAMFOLDER="$MAILDIR/.Spam"
+  # make sure the spam folder actually exists
+  `test -d "$SPAMFOLDER" || maildirmake "$SPAMFOLDER" && maildirmake "$SPAMFOLDER/als Ham lernen" && maildirmake "$SPAMFOLDER/als Spam lernen"`
+  # pipe to LDA and let Sieve handle the rest
+  to "|/var/qmail/bin/preline -f /usr/bin/sigchld_unblock /usr/libexec/dovecot/dovecot-lda -a '$RECIPIENT' -f '$SENDER' -o mail_home='$MAILDIR' -o mail_location='maildir:~/' -m Spam"
+  # 'to' implies 'exit'
+}
+else
+{
+
+  # This mail isn't spam. Deliver it to any forward addresses as well as into a local mailbox (unless disabled)
+
+  # extract possible forwards from vmailmgr config
+  VUSER_FORWARD = `dumpvuser $EXT | grep '^Forward: ' | awk '{ print $2 }' | tr '\n' ' '`
+  if ( $VUSER_FORWARD )
+  {
+    cc "!$VUSER_FORWARD"
+  }
+
+  # Check if this is a vmailmgr user that probably has mailbox delivery disabled
+  VUSER_HAS_MAILBOX = `dumpvuser $EXT | grep '^Has-Mailbox: ' | awk '{ print $2 }'`
+  VUSER_MAILBOX_ENABLED = `dumpvuser $EXT | grep '^Mailbox-Enabled: ' | awk '{ print $2 }'`
+  if ( "$VUSER_HAS_MAILBOX" eq "false" || "$VUSER_MAILBOX_ENABLED" eq "false" )
+  {
+    log "Local mailbox delivery explicitly disabled for this address"
+    exit
+  }
+  else
+  {
+    # pipe to LDA and let Sieve handle the rest
+    to "|/var/qmail/bin/preline -f /usr/bin/sigchld_unblock /usr/libexec/dovecot/dovecot-lda -a '$RECIPIENT' -f '$SENDER' -o mail_home='$MAILDIR' -o mail_location='maildir:~/'"
+    # 'to' implies 'exit'
+  }
+
+}

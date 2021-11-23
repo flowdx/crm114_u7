@@ -349,6 +349,34 @@ Es ist möglich, das Limit von 3,9 MB abzuändern. Ich rate aber ausdrücklich d
 ### 13.2 Die Spamerkennung eingehender "großer" E-Mails verzögert die Zustellung (Workaround implementiert)
 **Implementierte Lösung:** Eingehende E-Mails, die größer als 2 MB sind, werden nicht an CRM114 zur Spamrüfung übergeben. Dies geschieht, um die Last für CRM114 gering zu halten und weil "echte" Spammails selten größer sind als 2 MB. Auf eigene Verantwortung kann dieser Wert in der .mailfilter-Datei abgeändert werden. 
 
+### 13.3 Alternative Nutzung
+**Problem:**
+- Sieve wird durch diese Implementation nicht mehr unterstützt.
+- für jeden Nutzer muss die Spamerkennung einzeln aktiviert werden.
+
+Ausgehend von der obigen Anleitung ab **10.1** folgende Änderungen:
+
+- $HOME/.mailfilter wurde bei der Installation erstellt.
+- Als Ordnerstruktur gilt nicht "0 Spamfilter" sondern "Spam" (kann angepasst werden, s.o. 12.1).
+- Spammails kommen nicht nach "Spam.als Spam erkannt" sondern direkt in den Ordner "Spam"
+
+Ordnerstruktur wird bei der ersten eintreffenden Spammail erstellt. Alternativ kann dies auch für alle Mailaccounts erledigt werden (Die Ordner werden nur angelegt, sofern sie noch nicht existieren.)
+
+```Shell
+for i in $HOME/users/* ; do
+if [[ -d "$i" && ! -L "$i" ]]; then
+test -d "$HOME/users/$i/.Spam" || maildirmake "$i/.Spam"                
+test -d "$HOME/users/$i/.Spam.als Ham lernen" || maildirmake "$i/.Spam.als Ham lernen"
+test -d "$HOME/users/$i/.Spam.als Spam lernen" || maildirmake "$i/.Spam.als Spam lernen"
+fi
+done
+```
+
+Zum aktivieren für alle Nutzer wird $HOME/.qmail-default entsprechend angepasst. Alternativ kann es auch nur für einzelne Nutzer sein. Dann entsprechend oben Punkt 10.2. Bei beiden mit folgendem Inhalt:
+
+```
+|maildrop $HOME/.mailfilter
+```
 
 ## 14. Credits
 
